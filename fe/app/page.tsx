@@ -531,7 +531,7 @@ export default function HomePage() {
                 &ldquo;Mangrove Sari adalah Kelompok Pelestari Hutan Pesisir (KMPHP) yang berada di Desa Kaliwlingi,
                 Kecamatan Brebes, Jawa Tengah. Kami berdiri atas inisiatif masyarakat setempat untuk memulihkan dan
                 melestarikan hutan mangrove di wilayah kami, dan mengembangkan kawasan ini menjadi wisata edukasi Dewi
-                Mangrove Sari.&rdquo;{" "}
+                Mangrove Sari.
                 <p>
                   KMPHP Mangrove Sari memiliki visi untuk menjaga ekosistem daerah aliran sungai dan pesisir dalam
                   kerangka peningkatan kesejahteraan masyarakat sebagai wadah usaha bersama dengan prinsip demokrasi,
@@ -541,7 +541,7 @@ export default function HomePage() {
                   Rehabilitasi di lingkungan pesisir, sungai, muara sungai, dan daerah aliran sungai sejak tahun 2005,
                   inovasi pemanfaatan potensi sumber daya alam, kolaborasi dengan segenap elemen masyarakat dari
                   berbagai kalangan seperti pemerintah, kelompok LSM nasional maupun internasional, perguruan tinggi,
-                  komunitas, seniman dan budayawan, serta media masa (pers).
+                  komunitas, seniman dan budayawan, serta media masa (pers).&rdquo;{" "}
                 </p>
               </blockquote>
             </div>
