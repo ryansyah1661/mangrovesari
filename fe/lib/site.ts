@@ -1,6 +1,3 @@
-// Data situs yang dipakai bersama (header, footer, tombol WhatsApp).
-// TODO: ganti nomor, email, dan link sosmed dengan data asli sebelum rilis.
-
 export const WA_NUMBER = "6281234567890";
 
 export function waLink(text?: string) {
@@ -26,19 +23,17 @@ export type NavItem = {
 };
 
 export const NAV: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Majalah", href: "/majalah" },
+  { label: "Beranda", href: "/" },
   {
     label: "Profile",
     children: [
-      { label: "Organisasi", href: "/organisasi" },
-      { label: "Sejarah", href: "/sejarah" },
+      { label: "Struktur Organisasi", href: "/organisasi" },
+      { label: "Sejarah Pemulihan", href: "/sejarah" },
     ],
   },
-  { label: "Artikel", href: "/artikel" },
+  { label: "Warta & Media", href: "/wardia" },
   { label: "Ekowisata", href: "/ekowisata" },
   { label: "UMKM", href: "/umkm" },
-  { label: "Video", href: "/video" },
   { label: "Galeri", href: "/galeri" },
   { label: "Kontak", href: "/kontak" },
 ];

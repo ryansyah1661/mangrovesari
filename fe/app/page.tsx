@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import SiteHeader from "@/components/SiteHeader";
 
 // Types
 interface NavLink {
@@ -243,103 +244,7 @@ export default function HomePage() {
   return (
     <div className="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen">
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-950/95 backdrop-blur-md shadow-md border-b border-emerald-900/40">
-        <div className="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-200">
-              <span className="material-symbols-outlined text-2xl">forest</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold text-white tracking-tight leading-tight">MANGROVE SARI</span>
-              <span className="text-xs text-emerald-300 tracking-wide uppercase hidden sm:block">
-                Ekowisata &amp; Konservasi Brebes
-              </span>
-            </div>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1">
-            <a className="px-4 py-2 bg-emerald-700 text-white text-sm font-medium rounded-full shadow-sm" href="#">
-              Beranda
-            </a>
-            <div className="relative group">
-              <button
-                className="px-4 py-2 text-sm font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/60 rounded-full transition flex items-center gap-1"
-                type="button">
-                Profile
-                <span className="material-symbols-outlined text-base">expand_more</span>
-              </button>
-              <div className="absolute left-0 top-full mt-2 hidden group-hover:flex flex-col w-48 bg-emerald-900 rounded-xl shadow-xl p-2 z-50 border border-emerald-800">
-                <a
-                  className="px-3 py-2 rounded-lg text-sm text-emerald-100 hover:bg-emerald-800 hover:text-white transition"
-                  href="/organisasi">
-                  Struktur Organisasi
-                </a>
-                <a
-                  className="px-3 py-2 rounded-lg text-sm text-emerald-100 hover:bg-emerald-800 hover:text-white transition"
-                  href="/sejarah">
-                  Sejarah Pemulihan
-                </a>
-              </div>
-            </div>
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                className="px-4 py-2 text-sm font-medium text-emerald-100 hover:text-white hover:bg-emerald-900/60 rounded-full transition"
-                href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Header Action Buttons */}
-          <div className="flex items-center gap-3">
-            <a
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium transition shadow-sm"
-              href="https://wa.me/6281234567890"
-              rel="noopener noreferrer"
-              target="_blank">
-              <span className="material-symbols-outlined text-lg">chat</span>
-              <span>Hubungi Kami</span>
-            </a>
-            <button
-              aria-label="Buka Menu"
-              aria-expanded={mobileMenuOpen}
-              className="xl:hidden p-2 rounded-lg text-emerald-100 hover:bg-emerald-900/60 transition"
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              <span className="material-symbols-outlined text-2xl">{mobileMenuOpen ? "close" : "menu"}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Nav Overlay */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-emerald-950 p-4 border-t border-emerald-900/60 flex flex-col gap-1 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <a className="px-4 py-2.5 rounded-lg bg-emerald-800 text-white font-medium" href="#">
-              Beranda
-            </a>
-            <a
-              className="px-4 py-2.5 rounded-lg text-emerald-200 hover:bg-emerald-900 hover:text-white transition"
-              href="/organisasi">
-              Struktur Organisasi
-            </a>
-            <a
-              className="px-4 py-2.5 rounded-lg text-emerald-200 hover:bg-emerald-900 hover:text-white transition"
-              href="/sejarah">
-              Sejarah Pemulihan
-            </a>
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                className="px-4 py-2.5 rounded-lg text-emerald-200 hover:bg-emerald-900 hover:text-white transition"
-                href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
-      </header>
+      <SiteHeader />
 
       {/* MAIN CONTENT */}
       <main className="w-full pt-20">

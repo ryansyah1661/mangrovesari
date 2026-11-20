@@ -57,10 +57,7 @@ export default function SiteHeader() {
                 </div>
               </div>
             ) : (
-              <Link
-                key={item.label}
-                href={item.href!}
-                className={isActive(item.href!) ? linkActive : linkBase}>
+              <Link key={item.label} href={item.href!} className={isActive(item.href!) ? linkActive : linkBase}>
                 {item.label}
               </Link>
             ),
@@ -68,32 +65,6 @@ export default function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-space-sm">
-          <div className="hidden md:flex items-center gap-space-xs">
-            <a
-              aria-label="Facebook Mangrove Sari"
-              className="w-9 h-9 rounded-full bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 flex items-center justify-center text-on-primary transition-colors"
-              href={SITE.facebook}
-              rel="noopener noreferrer"
-              target="_blank">
-              <span className="material-symbols-outlined text-[18px]">public</span>
-            </a>
-            <a
-              aria-label="Instagram Mangrove Sari"
-              className="w-9 h-9 rounded-full bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 flex items-center justify-center text-on-primary transition-colors"
-              href={SITE.instagram}
-              rel="noopener noreferrer"
-              target="_blank">
-              <span className="material-symbols-outlined text-[18px]">photo_camera</span>
-            </a>
-          </div>
-          <a
-            className="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all font-label-md text-label-md shadow-[0_4px_20px_-2px_rgba(31,77,58,0.12)]"
-            href={waLink()}
-            rel="noopener noreferrer"
-            target="_blank">
-            <span className="material-symbols-outlined text-[18px]">chat</span>
-            <span>WhatsApp</span>
-          </a>
           <button
             aria-label="Menu Utama"
             className="xl:hidden p-2 rounded-lg text-on-primary hover:bg-surface-container-lowest/10"
