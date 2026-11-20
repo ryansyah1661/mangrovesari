@@ -71,9 +71,9 @@ const FEATURES: Feature[] = [
     iconBg: "bg-emerald-100",
     iconColor: "text-emerald-800",
     label: "Ekowisata Pesisir",
-    title: "Jelajah Hutan & Susur Rivering",
-    text: "Nikmati trekking kayu estuari, susur sungai perahu tradisional, belajar membatik pewarna alami mangrove, hingga wisata kuliner pesisir khas Brebes.",
-    linkText: "Lihat Paket Wisata",
+    title: "Aneka Ragam Jelajah Hutan Mangrove",
+    text: "Jelajahi keindahan Mangrove Sari! Nikmati tracking mangrove, sensasi speed boat, belajar batik, budidaya kepiting, hingga tarian lokal dan kuliner khas.",
+    linkText: "Baca Selengkapnya",
     href: "/ekowisata",
   },
   {
@@ -81,9 +81,9 @@ const FEATURES: Feature[] = [
     iconBg: "bg-amber-100",
     iconColor: "text-amber-800",
     label: "Pemberdayaan Warga",
-    title: "Produk Olahan & Olahan Lokal",
-    text: "Hasil olahan tangan warga Dukuh Pandansari seperti sirup buah pidada/bogem tinggi vitamin C, keripik daun mangrove, dan suvenir ramah lingkungan.",
-    linkText: "Katalog Produk",
+    title: "Paket UMKM Spesial Untuk Anda",
+    text: "Dukung penggerak ekonomi lokal! Lihat beragam produk unik dan inovatif hasil pemberdayaan UMKM Mangrovesari. Beli dan berdayakan!",
+    linkText: "Baca Selengkapnya",
     href: "/umkm",
   },
   {
@@ -91,9 +91,9 @@ const FEATURES: Feature[] = [
     iconBg: "bg-teal-100",
     iconColor: "text-teal-800",
     label: "Akuntabilitas",
-    title: "Tata Kelola & Legalitas Resmi",
-    text: "Berada di bawah naungan Kelompok Masyarakat Pelestari Hutan Pesisir (KMPHP) Mangrove Sari. Dilengkapi SK Desa, kementerian, dan SOP navigasi aman.",
-    linkText: "Dokumen & Legalitas",
+    title: "Legalitas Badan Usaha dan Organisasi",
+    text: "Pahami Struktur Organisasi MANGROVE SARI. Kenali tim, peran, dan fungsi mereka dalam mengelola konservasi, ekowisata, serta pengembangan UMKM berbasis mangrove.",
+    linkText: "Baca Selengkapnya",
     href: "/profil",
   },
 ];
@@ -111,48 +111,96 @@ const PILLARS: Pillar[] = [
     iconBg: "bg-emerald-100",
     iconColor: "text-emerald-700",
     number: "01",
-    title: "Rehabilitasi Sabuk Hijau",
-    text: "Penanaman lebih dari 4,4 juta batang mangrove untuk membentengi pemukiman warga dari bahaya erosi dan abrasi laut.",
+    title: "Rehabilitasi",
+    text: "Penanaman 4.479.500 batang mangrove di luasan 440 Ha.",
   },
   {
     icon: "school",
     iconBg: "bg-amber-100",
     iconColor: "text-amber-700",
     number: "02",
-    title: "Pelatihan Olahan Pangan",
-    text: "Pemberdayaan kelompok perempuan tani dalam mengolah hasil kebun mangrove menjadi sirup bogem, dodol, dan keripik.",
+    title: "Pelatihan",
+    text: "Pemanfaatan buah mangrove sebagai makanan olahan.",
   },
   {
     icon: "theater_comedy",
     iconBg: "bg-teal-100",
     iconColor: "text-teal-700",
     number: "03",
-    title: "Seni & Kebudayaan Pesisir",
-    text: "Pelestarian tari tradisional pesisir, teater anak nelayan, dan gelaran festival budaya tahunan desa.",
+    title: "Kebudayaan",
+    text: "Kampanye kondisi ekosistem pesisir dan perubahan iklim melalui pentas seni.",
   },
   {
     icon: "flutter_dash",
     iconBg: "bg-emerald-100",
     iconColor: "text-emerald-700",
     number: "04",
-    title: "Pemulihan Ekosistem",
-    text: "Kembalinya habitat alami burung migran serta bertambahnya populasi biota pesisir di sekitar hutan.",
+    title: "Dampak Lingkungan",
+    text: "Peningkatan jumlah satwa liar terutama berupa burung dan biota laut.",
   },
   {
     icon: "set_meal",
     iconBg: "bg-amber-100",
     iconColor: "text-amber-700",
     number: "05",
-    title: "Peningkatan Ekonomi Nelayan",
-    text: "Tingkat tangkapan udang, kepiting soka, dan ikan liar yang meningkat seiring sehatnya kawasan bakau.",
+    title: "Sosial Ekonomi",
+    text: "Peningkatan volume tangkapan udang liar, kepiting, ikan di kawasan hutan mangrove.",
   },
   {
-    icon: "science",
+    icon: "lightbulb",
     iconBg: "bg-teal-100",
     iconColor: "text-teal-700",
     number: "06",
-    title: "Inovasi & Riset Pesisir",
-    text: "Penerapan sistem silvofishery dan penyediaan stasiun penelitian bagi akademisi dalam serta luar negeri.",
+    title: "Inovasi",
+    text: "Pemanfaatan sumberdaya air, pesisir dan mangrove mengacu pada pelestarian dan pemberdayaan masyarakat.",
+  },
+  {
+    icon: "volunteer_activism",
+    iconBg: "bg-emerald-100",
+    iconColor: "text-emerald-700",
+    number: "07",
+    title: "Pekerja Lokal",
+    text: "Menyerap sebanyak 250 orang tenaga kerja lokal.",
+  },
+  {
+    icon: "trolley",
+    iconBg: "bg-amber-100",
+    iconColor: "text-amber-700",
+    number: "08",
+    title: "Usaha Rakyat",
+    text: "Mimiliki 30 usaha masyarakat dalam berbagai jenis.",
+  },
+  {
+    icon: "handshake",
+    iconBg: "bg-emerald-100",
+    iconColor: "text-emerald-700",
+    number: "09",
+    title: "Mitra Kerja",
+    text: "Kami bermitra dengan 70 NGO dalam maupun luar negeri.",
+  },
+  {
+    icon: "eco",
+    iconBg: "bg-teal-100",
+    iconColor: "text-teal-700",
+    number: "10",
+    title: "Reboisasi Mangrove",
+    text: "Menanam 4.479.500 batang mangrove 26 jenis di luasan 440 Ha.",
+  },
+  {
+    icon: "public",
+    iconBg: "bg-amber-100",
+    iconColor: "text-amber-700",
+    number: "11",
+    title: "Wisatawan Mancanegara",
+    text: "Kami telah dikunjungi oleh wisatawan dari 30 negara.",
+  },
+  {
+    icon: "science",
+    iconBg: "bg-emerald-100",
+    iconColor: "text-emerald-700",
+    number: "12",
+    title: "Jurnal Ilmiah",
+    text: "Memiliki 35 Hasil Riset Akademisi.",
   },
 ];
 
@@ -266,12 +314,11 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight max-w-4xl">
-              Restorasi Pesisir, Kemandirian Warga Pandansari
+              Mangrove Sari Pelestari Hutan Pesisir
             </h1>
 
             <p className="text-base sm:text-lg text-emerald-100/90 max-w-2xl mb-8 leading-relaxed">
-              Memulihkan benteng hijau pantai utara dari abrasi, memelihara keanekaragaman hayati, dan menggerakkan
-              perekonomian masyarakat Kaliwlingi, Brebes.
+              Konservasi Hutan Pesisir Berbasis Masyarakat. Bertahan Untuk Bumi, Berkembang Bersama Warga
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -280,12 +327,6 @@ export default function HomePage() {
                 href="#kisah">
                 <span>Tentang Kami</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>
-              </a>
-              <a
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-900/60 hover:bg-emerald-800/80 text-white font-semibold border border-emerald-700/60 transition backdrop-blur-sm"
-                href="#pilar">
-                <span className="material-symbols-outlined text-lg">explore</span>
-                <span>Paket Wisata</span>
               </a>
             </div>
 
@@ -364,17 +405,12 @@ export default function HomePage() {
                 <span>Jejak Konservasi</span>
               </span>
               <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 leading-tight mb-4">
-                Bangkit dari Abrasi: Perjuangan Warga Pandansari Merawat Pesisir
+                Dari Tambak Terpuruk Menuju Desa Wisata Inspiratif: Kisah Kebangkitan Dewi Mangrove Sari Brebes
               </h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                Dukuh Pandansari di Desa Kaliwlingi sempat kehilangan ratusan hektar lahan tambak akibat abrasi hebat di
-                pantai utara Brebes. Dampak erosi tidak hanya merusak mata pencaharian nelayan, tetapi juga mengancam
-                keberadaan pemukiman warga.
-              </p>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                Menolak kalah dari bencana, masyarakat berinisiatif membentuk kelompok swadaya untuk menanam kembali
-                benteng bakau. Usaha panjang yang dimulai sejak 2005 ini kini membuahkan kawasan ekosistem mangrove
-                seluas 440 hektar yang juga menjadi pusat edukasi dan ekowisata daerah.
+                Desa Wisata Mangrove Dukuh Pandansari, atau yang akrab disebut Dewi Mangrove Sari, di Desa Kaliwlingi,
+                Kecamatan Brebes, Kabupaten Brebes, adalah contoh nyata dari kekuatan masyarakat lokal dalam mengubah
+                musibah menjadi berkah.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-8">
@@ -437,9 +473,9 @@ export default function HomePage() {
               <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-2">
                 Fokus Kegiatan
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-4">Pilar Utama Pengelolaan Kawasan</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-4">Pilar Keberhasilan</h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Enam fokus kerja berkelanjutan yang dirancang untuk menjaga kelestarian ekosistem sekaligus menopang
+                12 pilar keberhasilan yang dirancang untuk menjaga kelestarian ekosistem sekaligus menopang
                 kesejahteraan warga setempat.
               </p>
             </div>
@@ -489,21 +525,25 @@ export default function HomePage() {
             <div className="relative z-10 flex flex-col gap-6">
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-800 uppercase tracking-wide">
                 <span className="material-symbols-outlined text-sm">campaign</span>
-                <span>Catatan Pengelola</span>
+                <span>Sekapur Sirih</span>
               </span>
               <blockquote className="text-lg sm:text-xl text-slate-800 font-medium italic leading-relaxed border-l-4 border-emerald-600 pl-4">
-                &ldquo;Mangrove bukan sekadar pepohonan penahan ombak. Bagi kami di Pandansari, tiap bibit yang tumbuh
-                adalah benteng keselamatan pemukiman sekaligus harapan ekonomi bagi keluarga nelayan.&rdquo;
+                &ldquo;Mangrove Sari adalah Kelompok Pelestari Hutan Pesisir (KMPHP) yang berada di Desa Kaliwlingi,
+                Kecamatan Brebes, Jawa Tengah. Kami berdiri atas inisiatif masyarakat setempat untuk memulihkan dan
+                melestarikan hutan mangrove di wilayah kami, dan mengembangkan kawasan ini menjadi wisata edukasi Dewi
+                Mangrove Sari.&rdquo;{" "}
+                <p>
+                  KMPHP Mangrove Sari memiliki visi untuk menjaga ekosistem daerah aliran sungai dan pesisir dalam
+                  kerangka peningkatan kesejahteraan masyarakat sebagai wadah usaha bersama dengan prinsip demokrasi,
+                  transparan, dan mengedapankan kegiatan berbasis konservasi.
+                </p>
+                <p>
+                  Rehabilitasi di lingkungan pesisir, sungai, muara sungai, dan daerah aliran sungai sejak tahun 2005,
+                  inovasi pemanfaatan potensi sumber daya alam, kolaborasi dengan segenap elemen masyarakat dari
+                  berbagai kalangan seperti pemerintah, kelompok LSM nasional maupun internasional, perguruan tinggi,
+                  komunitas, seniman dan budayawan, serta media masa (pers).
+                </p>
               </blockquote>
-              <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
-                <div className="w-12 h-12 rounded-full bg-emerald-800 text-white flex items-center justify-center font-bold text-sm">
-                  RJ
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">Rusjan &amp; Pengurus KMPHP</h4>
-                  <p className="text-xs text-slate-500">Kelompok Masyarakat Pelestari Hutan Pesisir Mangrove Sari</p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -515,10 +555,11 @@ export default function HomePage() {
               <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-2">
                 Penggerak Lapangan
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-4">Pengurus &amp; Tim KMPHP</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-4">
+                Mengenal Tim Inti Penyelamat Ekosistem
+              </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Tokoh lokal yang mengoordinasikan kegiatan konservasi, pengelolaan tiket wisata, dan pendampingan
-                lapangan secara berkelanjutan.
+                Tokoh lokal yang mengoordinasikan kegiatan konservasi dan pendampingan lapangan secara berkelanjutan.
               </p>
             </div>
 
@@ -605,7 +646,7 @@ export default function HomePage() {
               <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-1">
                 Kemitraan
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Lembaga &amp; Instansi Pendukung</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Mitra Sejati</h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
               {PARTNERS.map((p) => (

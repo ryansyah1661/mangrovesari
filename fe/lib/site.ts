@@ -25,10 +25,10 @@ export type NavItem = {
 export const NAV: NavItem[] = [
   { label: "Beranda", href: "/" },
   {
-    label: "Profile",
+    label: "Profil",
     children: [
       { label: "Struktur Organisasi", href: "/organisasi" },
-      { label: "Sejarah Pemulihan", href: "/sejarah" },
+      { label: "Sejarah", href: "/sejarah" },
     ],
   },
   { label: "Warta & Media", href: "/wardia" },
