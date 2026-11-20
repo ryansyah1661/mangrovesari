@@ -19,7 +19,7 @@ export default function SiteHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary-container/95 backdrop-blur-xl shadow-[0_12px_32px_-4px_rgba(31,77,58,0.18)]">
       <div className="h-20 w-full px-space-md lg:px-margin flex items-center justify-between gap-space-md">
-        <Link href="/" className="flex items-center gap-space-md flex-shrink-0">
+        <Link href="/" className="flex items-center gap-space-md shrink-0">
           <div className="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary">
             <span className="material-symbols-outlined text-[24px]">forest</span>
           </div>
