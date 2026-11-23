@@ -297,14 +297,14 @@ export default function HomePage() {
       {/* MAIN CONTENT */}
       <main className="w-full pt-20">
         {/* HERO SECTION */}
-        <section className="relative w-full bg-emerald-950 text-white min-h-[640px] flex items-center py-20 overflow-hidden">
+        <section className="relative w-full bg-emerald-950 text-white min-h-160 flex items-center py-20 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover opacity-35"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdEbPhvsbUDkbZ68DcHRDDRpVWMmWvKUdFSmGYTBDEv-nax1R5z3Rieyme9ZhcM6Q6NViYlfOFnTcrVI6hRKi6Q_9Ps71n2S0XGK_3vaqM4x0gDHTfM7h6qtwEmKktwRDIugC6wjt3-wHjy_hs2kqQOZ-pXyYIQ5H6hTSBQo2zT6dXjtIPqCbYsfNxzqnufi1VjYOE9zlbWwCujRyboqeJo_iK37G2ea77KHcxt3I"
               alt="Hutan mangrove Mangrove Sari Brebes"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/70 to-emerald-950/40"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-emerald-950 via-emerald-950/70 to-emerald-950/40"></div>
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
@@ -383,7 +383,7 @@ export default function HomePage() {
             <div className="lg:col-span-6 relative">
               <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200">
                 <img
-                  className="w-full h-[400px] sm:h-[480px] object-cover"
+                  className="w-full h-100 sm:h-120 object-cover"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
                   alt="Aktivitas warga menanam pohon bakau"
                 />
