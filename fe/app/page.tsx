@@ -291,13 +291,11 @@ export default function HomePage() {
                   href="#kisah"
                   className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm shadow-lg transition">
                   <span>Telusuri Kisah Kami</span>
-                  <span className="material-symbols-outlined text-lg">arrow_downward</span>
                 </a>
                 <Link
                   href="/ekowisata"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-medium text-sm transition">
                   <span>Jelajahi Kawasan</span>
-                  <span className="material-symbols-outlined text-base">arrow_outward</span>
                 </Link>
               </div>
             </div>
