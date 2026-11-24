@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "MANGROVE SARI - Ekowisata & Konservasi Pesisir Brebes",
-  description: "Kawasan Konservasi Pesisir & Ekowisata Berbasis Warga",
+  title: "Mangrove Sari — Ekowisata & Konservasi Pesisir Brebes",
+  description: "Kelompok Masyarakat Pelestari Hutan Pesisir (KMPHP) di Dukuh Pandansari, Desa Kaliwlingi, Brebes.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="id" className={poppins.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
-        />
-        <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-          rel="stylesheet"
         />
       </head>
-      <body className="bg-background font-body-md text-on-surface antialiased" suppressHydrationWarning>
-        {children}
-      </body>
+      <body className={`${poppins.className} antialiased`}>{children}</body>
     </html>
   );
 }

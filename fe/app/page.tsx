@@ -1,49 +1,41 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 
-// Types
-interface NavLink {
-  label: string;
+interface ProgramCard {
+  category: string;
+  title: string;
+  description: string;
+  cta: string;
   href: string;
+  image: string;
 }
 
-interface Feature {
-  icon: string;
-  iconBg: string;
-  iconColor: string;
-  label: string;
-  title: string;
-  text: string;
-  linkText: string;
-  href: string;
-}
-
-interface Pillar {
-  icon: string;
-  iconBg: string;
-  iconColor: string;
-  number: string;
-  title: string;
-  text: string;
+interface PillarGroup {
+  cluster: string;
+  accent: string;
+  items: {
+    num: string;
+    title: string;
+    detail: string;
+  }[];
 }
 
 interface Stat {
-  value: string;
+  figure: string;
   label: string;
-  note: string;
+  context: string;
 }
 
 interface TeamMember {
-  role: string;
   name: string;
-  desc: string;
+  role: string;
+  since: string;
+  focus: string;
 }
 
 interface NewsItem {
-  category: string;
-  categoryColor: string;
+  tag: string;
   date: string;
   title: string;
   excerpt: string;
@@ -51,515 +43,567 @@ interface NewsItem {
   href: string;
 }
 
-interface Partner {
-  icon: string;
-  name: string;
-}
-
-// Data Sets
-const NAV_LINKS: NavLink[] = [
-  { label: "Warta & Media", href: "/wardia" },
-  { label: "Ekowisata", href: "/ekowisata" },
-  { label: "UMKM", href: "/umkm" },
-  { label: "Galeri", href: "/galeri" },
-  { label: "Kontak", href: "/kontak" },
-];
-
-const FEATURES: Feature[] = [
+const PROGRAMS: ProgramCard[] = [
   {
-    icon: "sailing",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-800",
-    label: "Ekowisata Pesisir",
-    title: "Aneka Ragam Jelajah Hutan Mangrove",
-    text: "Jelajahi keindahan Mangrove Sari! Nikmati tracking mangrove, sensasi speed boat, belajar batik, budidaya kepiting, hingga tarian lokal dan kuliner khas.",
-    linkText: "Baca Selengkapnya",
+    category: "Ekowisata Pesisir",
+    title: "Ragam Aktivitas Ekowisata Mangrove",
+    description:
+      "Jelajahi keindahan Mangrove Sari melalui berbagai aktivitas menarik. Nikmati pengalaman menyusuri hutan mangrove, naik speed boat, belajar membatik, budidaya kepiting, hingga menikmati tarian dan kuliner khas lokal.",
+    cta: "Eksplorasi Kawasan Ekowisata",
     href: "/ekowisata",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDdEbPhvsbUDkbZ68DcHRDDRpVWMmWvKUdFSmGYTBDEv-nax1R5z3Rieyme9ZhcM6Q6NViYlfOFnTcrVI6hRKi6Q_9Ps71n2S0XGK_3vaqM4x0gDHTfM7h6qtwEmKktwRDIugC6wjt3-wHjy_hs2kqQOZ-pXyYIQ5H6hTSBQo2zT6dXjtIPqCbYsfNxzqnufi1VjYOE9zlbWwCujRyboqeJo_iK37G2ea77KHcxt3I",
   },
   {
-    icon: "shopping_bag",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-800",
-    label: "Pemberdayaan Warga",
-    title: "Paket UMKM Spesial Untuk Anda",
-    text: "Dukung penggerak ekonomi lokal! Lihat beragam produk unik dan inovatif hasil pemberdayaan UMKM Mangrovesari. Beli dan berdayakan!",
-    linkText: "Baca Selengkapnya",
+    category: "Ekonomi Warga",
+    title: "Produk Unggulan UMKM Lokal",
+    description:
+      "Kenali beragam produk kreatif hasil pemberdayaan UMKM Mangrove Sari. Temukan produk olahan, kerajinan, dan berbagai karya masyarakat lokal sebagai bentuk dukungan terhadap ekonomi masyarakat pesisir.",
+    cta: "Telusuri Produk UMKM",
     href: "/umkm",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c",
   },
   {
-    icon: "verified_user",
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-800",
-    label: "Akuntabilitas",
-    title: "Legalitas Badan Usaha dan Organisasi",
-    text: "Pahami Struktur Organisasi MANGROVE SARI. Kenali tim, peran, dan fungsi mereka dalam mengelola konservasi, ekowisata, serta pengembangan UMKM berbasis mangrove.",
-    linkText: "Baca Selengkapnya",
+    category: "Kelembagaan",
+    title: "Profil Organisasi Mangrove Sari",
+    description:
+      "Kenali lebih dekat Kelompok Masyarakat Pelestari Hutan Pesisir Mangrove Sari. Pelajari struktur organisasi, pembagian peran, serta upaya bersama dalam menjaga kelestarian ekosistem mangrove.",
+    cta: "Lihat Struktur & Legalitas",
     href: "/profil",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDdEbPhvsbUDkbZ68DcHRDDRpVWMmWvKUdFSmGYTBDEv-nax1R5z3Rieyme9ZhcM6Q6NViYlfOFnTcrVI6hRKi6Q_9Ps71n2S0XGK_3vaqM4x0gDHTfM7h6qtwEmKktwRDIugC6wjt3-wHjy_hs2kqQOZ-pXyYIQ5H6hTSBQo2zT6dXjtIPqCbYsfNxzqnufi1VjYOE9zlbWwCujRyboqeJo_iK37G2ea77KHcxt3I",
   },
 ];
 
-const STORY_TAGS = [
-  "Restorasi 440+ Hektar Lahan",
-  "Kemandirian Ekonomi Warga",
-  "Stasiun Riset & Edukasi",
-  "Penerima Anugerah Kalpataru",
+const STORY_HIGHLIGHTS = [
+  "Restorasi 440+ hektar lahan bekas tambak terabrasi",
+  "250+ warga lokal terlibat langsung dalam pengelolaan",
+  "Stasiun riset lapangan & KKN perguruan tinggi nasional",
+  "Penerima penghargaan lingkungan hidup Kalpataru",
 ];
 
-const PILLARS: Pillar[] = [
+const PILLAR_GROUPS: PillarGroup[] = [
   {
-    icon: "park",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-700",
-    number: "01",
-    title: "Rehabilitasi",
-    text: "Penanaman 4.479.500 batang mangrove di luasan 440 Ha.",
+    cluster: "Ekologi & Pemulihan Pesisir",
+    accent: "border-t-emerald-800",
+    items: [
+      {
+        num: "01",
+        title: "Rehabilitasi & Reboisasi",
+        detail: "Penanaman 4.479.500 batang dari 26 jenis mangrove di hamparan pesisir seluas 440 hektar.",
+      },
+      {
+        num: "02",
+        title: "Pemulihan Habitat Satwa",
+        detail: "Kembalinya koloni burung air migran, bangau, serta ekosistem biota laut di sela akar bakau.",
+      },
+      {
+        num: "03",
+        title: "Inovasi Tata Air Pesisir",
+        detail: "Pengelolaan ekosistem payau yang memadukan sabuk hijau pelindung pantai dengan zona edukasi.",
+      },
+    ],
   },
   {
-    icon: "school",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-700",
-    number: "02",
-    title: "Pelatihan",
-    text: "Pemanfaatan buah mangrove sebagai makanan olahan.",
+    cluster: "Ekonomi & Kemandirian Warga",
+    accent: "border-t-amber-600",
+    items: [
+      {
+        num: "04",
+        title: "Pelatihan Pangan Olahan",
+        detail: "Pemanfaatan buah mangrove bogem menjadi sirup, dodol, dan camilan bernilai jual.",
+      },
+      {
+        num: "05",
+        title: "Peningkatan Tangkapan Nelayan",
+        detail: "Melimpahnya populasi udang liar, kepiting bakau, dan ikan di sekitar perakaran mangrove.",
+      },
+      {
+        num: "06",
+        title: "Penyerapan 250 Tenaga Kerja",
+        detail: "Membuka lapangan kerja langsung bagi warga Dukuh Pandansari dan desa penyangga.",
+      },
+    ],
   },
   {
-    icon: "theater_comedy",
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-700",
-    number: "03",
-    title: "Kebudayaan",
-    text: "Kampanye kondisi ekosistem pesisir dan perubahan iklim melalui pentas seni.",
+    cluster: "Usaha Rakyat & Budaya",
+    accent: "border-t-teal-800",
+    items: [
+      {
+        num: "07",
+        title: "30 Unit Usaha Masyarakat",
+        detail: "Tumbuhnya usaha mikro mandiri mulai dari warung kuliner laut, perahu susur sungai, hingga batik.",
+      },
+      {
+        num: "08",
+        title: "Kampanye Kebudayaan",
+        detail: "Edukasi isu perubahan iklim dan penyelamatan pesisir melalui pentas seni dan tradisi lokal.",
+      },
+      {
+        num: "09",
+        title: "Kemandirian Komunitas",
+        detail: "Operasional kawasan dibiayai secara swadaya dengan prinsip tata kelola transparan.",
+      },
+    ],
   },
   {
-    icon: "flutter_dash",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-700",
-    number: "04",
-    title: "Dampak Lingkungan",
-    text: "Peningkatan jumlah satwa liar terutama berupa burung dan biota laut.",
-  },
-  {
-    icon: "set_meal",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-700",
-    number: "05",
-    title: "Sosial Ekonomi",
-    text: "Peningkatan volume tangkapan udang liar, kepiting, ikan di kawasan hutan mangrove.",
-  },
-  {
-    icon: "lightbulb",
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-700",
-    number: "06",
-    title: "Inovasi",
-    text: "Pemanfaatan sumberdaya air, pesisir dan mangrove mengacu pada pelestarian dan pemberdayaan masyarakat.",
-  },
-  {
-    icon: "volunteer_activism",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-700",
-    number: "07",
-    title: "Pekerja Lokal",
-    text: "Menyerap sebanyak 250 orang tenaga kerja lokal.",
-  },
-  {
-    icon: "trolley",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-700",
-    number: "08",
-    title: "Usaha Rakyat",
-    text: "Mimiliki 30 usaha masyarakat dalam berbagai jenis.",
-  },
-  {
-    icon: "handshake",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-700",
-    number: "09",
-    title: "Mitra Kerja",
-    text: "Kami bermitra dengan 70 NGO dalam maupun luar negeri.",
-  },
-  {
-    icon: "eco",
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-700",
-    number: "10",
-    title: "Reboisasi Mangrove",
-    text: "Menanam 4.479.500 batang mangrove 26 jenis di luasan 440 Ha.",
-  },
-  {
-    icon: "public",
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-700",
-    number: "11",
-    title: "Wisatawan Mancanegara",
-    text: "Kami telah dikunjungi oleh wisatawan dari 30 negara.",
-  },
-  {
-    icon: "science",
-    iconBg: "bg-emerald-100",
-    iconColor: "text-emerald-700",
-    number: "12",
-    title: "Jurnal Ilmiah",
-    text: "Memiliki 35 Hasil Riset Akademisi.",
+    cluster: "Jejaring & Pengetahuan",
+    accent: "border-t-stone-800",
+    items: [
+      {
+        num: "10",
+        title: "70 Mitra Dalam & Luar Negeri",
+        detail: "Kolaborasi aktif bersama NGO, korporasi, dan instansi pemerintah dalam program konservasi.",
+      },
+      {
+        num: "11",
+        title: "Kunjungan 30 Negara",
+        detail: "Menjadi rujukan studi banding dan edukasi pesisir bagi delegasi mancanegara.",
+      },
+      {
+        num: "12",
+        title: "35 Publikasi Ilmiah",
+        detail: "Laboratorium alam yang melahirkan puluhan jurnal riset akademisi dan mahasiswa.",
+      },
+    ],
   },
 ];
 
 const STATS: Stat[] = [
-  { value: "250+", label: "Warga Terlibat", note: "Pekerja & Pengelola" },
-  { value: "30+", label: "UMKM Aktif", note: "Kelompok Olahan Lokal" },
-  { value: "70+", label: "Mitra Kerja", note: "Lembaga & Perusahaan" },
-  { value: "4,4 Jt", label: "Batang Tanam", note: "Di Area 440 Ha" },
-  { value: "30+", label: "Negara Wisatawan", note: "Kunjungan Mancanegara" },
-  { value: "35+", label: "Riset Akademis", note: "Publikasi & Jurnal" },
+  { figure: "440 Ha", label: "Luas Kawasan", context: "Hutan mangrove terjaga" },
+  { figure: "4,47 Jt", label: "Batang Ditanam", context: "26 spesies mangrove" },
+  { figure: "250+", label: "Warga Terlibat", context: "Pengelola & pekerja lokal" },
+  { figure: "30", label: "UMKM Aktif", context: "Usaha olahan & jasa" },
+  { figure: "70", label: "Mitra Kerja", context: "NGO, kampus & CSR" },
+  { figure: "35", label: "Kajian Ilmiah", context: "Jurnal & riset akademis" },
 ];
 
 const TEAM_MEMBERS: TeamMember[] = [
   {
-    role: "Ketua Pengelola",
     name: "Rusjan",
-    desc: "Inisiator awal pemulihan pesisir Pandansari sejak 2005 dan koordinator gotong royong warga.",
+    role: "Ketua Pengelola",
+    since: "Penggerak sejak 2005",
+    focus: "Inisiator pemulihan pesisir Pandansari dan koordinator utama gotong royong warga.",
   },
   {
-    role: "Koordinator Lapangan",
     name: "Sugiarto",
-    desc: "Penanggung jawab operasional jalurnya boardwalk kayu, armada perahu, dan keamanan pengunjung.",
+    role: "Koordinator Lapangan",
+    since: "Operasional Kawasan",
+    focus: "Mengawasi perawatan jalur boardwalk kayu, kesiapan armada perahu, serta keselamatan pengunjung.",
   },
   {
-    role: "Divisi Pembibitan & Riset",
     name: "Mashadi",
-    desc: "Praktisi pembibitan tanaman mangrove, pendamping penelitian universitas, dan fasilitator tanam bibit.",
+    role: "Divisi Pembibitan & Riset",
+    since: "Konservasi & Edukasi",
+    focus: "Mengelola kebun bibit mangrove dan mendampingi peneliti maupun mahasiswa di lapangan.",
   },
   {
-    role: "Bendahara Organisasi",
     name: "Supardi",
-    desc: "Pengelola transparansi kas tiket wisata, pendanaan program CSR, serta bagi hasil usaha masyarakat.",
+    role: "Bendahara Organisasi",
+    since: "Tata Kelola Keuangan",
+    focus: "Menjaga pencatatan kas kawasan, alokasi dana program CSR, serta pembagian hasil usaha warga.",
   },
   {
-    role: "Humas & Kemitraan",
     name: "Abdul Kamid",
-    desc: "Penghubung komunikasi dengan instansi pemerintah, agen perjalanan wisata, dan mitra pendukung.",
+    role: "Humas & Kemitraan",
+    since: "Hubungan Kelembagaan",
+    focus: "Menjembatani komunikasi dengan pemerintah daerah, akademisi, media, dan mitra lembaga.",
   },
   {
-    role: "Pengembangan Usaha",
     name: "Jarodin",
-    desc: "Pengembang rute wisata susur sungai, pengarah standar kuliner lokal, dan pemasaran suvenir.",
+    role: "Pengembangan Usaha",
+    since: "Ekowisata & UMKM",
+    focus: "Mengembangkan jalur edukasi susur sungai, standar kuliner pesisir, serta pemasaran produk UMKM.",
   },
 ];
 
 const NEWS_LIST: NewsItem[] = [
   {
-    category: "Kegiatan Lapangan",
-    categoryColor: "bg-emerald-700 text-white",
-    date: "18 Feb 2026",
+    tag: "Kegiatan Lapangan",
+    date: "18 Februari 2026",
     title: "Pelepasliaran 500 Bibit Kepiting Bakau Bersama Mahasiswa",
     excerpt:
-      "Upaya menjaga keseimbangan rantai makanan ekosistem rawa pasang surut sekaligus mendukung produktivitas nelayan.",
+      "Upaya menjaga keseimbangan rantai makanan ekosistem rawa pasang surut sekaligus mendukung produktivitas tangkapan nelayan setempat.",
     href: "/artikel/pelepasliaran-kepiting-bakau",
   },
   {
-    category: "Fasilitas",
-    categoryColor: "bg-amber-700 text-white",
-    date: "10 Feb 2026",
-    title: "Jalur Boardwalk Kayu 800 Meter Selesai Diperbaiki",
-    excerpt: "Akses menyusuri rimbunnya hutan mangrove kini lebih kokoh, aman, dan ramah untuk rombongan keluarga.",
+    tag: "Fasilitas Kawasan",
+    date: "10 Februari 2026",
+    title: "Perbaikan Jalur Boardwalk Kayu Sepanjang 800 Meter Rampung",
+    excerpt:
+      "Akses menyusuri rimbunnya hutan bakau kini lebih kokoh dan aman dilalui rombongan pelajar maupun keluarga.",
     href: "/artikel/boardwalk-baru",
   },
   {
-    category: "Prestasi Warga",
-    categoryColor: "bg-teal-700 text-white",
-    date: "28 Jan 2026",
-    title: "Sirup Bogem Olahan Warga Pandansari Raih Penghargaan UMKM",
+    tag: "Kabar UMKM",
+    date: "28 Januari 2026",
+    title: "Sirup Bogem Olahan Ibu-Ibu Pandansari Raih Apresiasi Daerah",
     excerpt:
-      "Produk minuman olahan alami karya kelompok perempuan tani berhasil masuk dalam jaringan pemasaran daerah.",
+      "Minuman olahan alami dari buah mangrove karya kelompok perempuan tani resmi masuk jaringan pemasaran kabupaten.",
     href: "/artikel/penghargaan-sirup-bogem",
   },
 ];
 
-const PARTNERS: Partner[] = [
-  { icon: "account_balance", name: "Kementerian LHK" },
-  { icon: "location_city", name: "Pemprov Jateng" },
-  { icon: "school", name: "UNDIP Semarang" },
-  { icon: "school", name: "IPB University" },
-  { icon: "business", name: "Pertamina Foundation" },
-  { icon: "public", name: "USAID Indonesia" },
-  { icon: "water", name: "BPDAS Pemali" },
-  { icon: "volunteer_activism", name: "Yayasan KEHATI" },
+const PARTNERS = [
+  "Kementerian LHK",
+  "Pemprov Jawa Tengah",
+  "Universitas Diponegoro",
+  "IPB University",
+  "Pertamina Foundation",
+  "USAID Indonesia",
+  "BPDAS Pemali Jratun",
+  "Yayasan KEHATI",
 ];
 
 export default function HomePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
-    <div className="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen">
-      {/* HEADER */}
+    <div className="bg-[#FAF8F4] font-sans text-stone-800 antialiased min-h-screen selection:bg-emerald-900 selection:text-white">
       <SiteHeader />
 
-      {/* MAIN CONTENT */}
-      <main className="w-full pt-20">
-        {/* HERO SECTION */}
-        <section className="relative w-full bg-emerald-950 text-white min-h-160 flex items-center py-20 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img
-              className="w-full h-full object-cover opacity-35"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdEbPhvsbUDkbZ68DcHRDDRpVWMmWvKUdFSmGYTBDEv-nax1R5z3Rieyme9ZhcM6Q6NViYlfOFnTcrVI6hRKi6Q_9Ps71n2S0XGK_3vaqM4x0gDHTfM7h6qtwEmKktwRDIugC6wjt3-wHjy_hs2kqQOZ-pXyYIQ5H6hTSBQo2zT6dXjtIPqCbYsfNxzqnufi1VjYOE9zlbWwCujRyboqeJo_iK37G2ea77KHcxt3I"
-              alt="Hutan mangrove Mangrove Sari Brebes"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-emerald-950 via-emerald-950/70 to-emerald-950/40"></div>
-          </div>
+      <main className="w-full">
+        {/* FULL-BLEED HERO */}
+        <section className="relative min-h-[88vh] flex items-end bg-emerald-950 text-white pt-28 pb-16 sm:pb-20 overflow-hidden">
+          <img
+            className="absolute inset-0 w-full h-full object-cover object-center scale-[1.01]"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdEbPhvsbUDkbZ68DcHRDDRpVWMmWvKUdFSmGYTBDEv-nax1R5z3Rieyme9ZhcM6Q6NViYlfOFnTcrVI6hRKi6Q_9Ps71n2S0XGK_3vaqM4x0gDHTfM7h6qtwEmKktwRDIugC6wjt3-wHjy_hs2kqQOZ-pXyYIQ5H6hTSBQo2zT6dXjtIPqCbYsfNxzqnufi1VjYOE9zlbWwCujRyboqeJo_iK37G2ea77KHcxt3I"
+            alt="Hamparan hutan mangrove Desa Kaliwlingi Brebes"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#062319] via-[#062319]/75 to-[#062319]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#062319]/90 via-[#062319]/45 to-transparent" />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/80 border border-emerald-700/50 text-emerald-300 text-xs sm:text-sm font-medium mb-6 backdrop-blur-sm">
-              <span className="material-symbols-outlined text-base">eco</span>
-              <span>Kawasan Konservasi Pesisir Berbasis Masyarakat</span>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-3xl">
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-amber-400 mb-4">
+                Dukuh Pandansari · Desa Kaliwlingi, Brebes
+              </p>
+
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.35rem] font-bold tracking-tight text-white leading-[1.15] mb-6">
+                Mangrove Sari, Menjaga Alam dan Kehidupan Pesisir
+              </h1>
+
+              <p className="text-base sm:text-lg text-stone-200 max-w-2xl leading-relaxed mb-9 font-normal">
+                Melestarikan Ekosistem Mangrove, Memberdayakan Masyarakat, Membangun Masa Depan Berkelanjutan.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="#kisah"
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm shadow-lg transition">
+                  <span>Telusuri Kisah Kami</span>
+                  <span className="material-symbols-outlined text-lg">arrow_downward</span>
+                </a>
+                <Link
+                  href="/ekowisata"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-medium text-sm transition">
+                  <span>Jelajahi Kawasan</span>
+                  <span className="material-symbols-outlined text-base">arrow_outward</span>
+                </Link>
+              </div>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight max-w-4xl">
-              Mangrove Sari Pelestari Hutan Pesisir
-            </h1>
-
-            <p className="text-base sm:text-lg text-emerald-100/90 max-w-2xl mb-8 leading-relaxed">
-              Konservasi Hutan Pesisir Berbasis Masyarakat. Bertahan Untuk Bumi, Berkembang Bersama Warga
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <a
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-amber-600 hover:bg-amber-500 text-white font-semibold transition shadow-md"
-                href="#kisah">
-                <span>Tentang Kami</span>
-                <span className="material-symbols-outlined text-lg">arrow_forward</span>
-              </a>
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-emerald-800/60 w-full max-w-3xl flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-emerald-200">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-amber-400 text-lg">verified</span>
-                <span>SK Legalitas Resmi</span>
+            {/* Bottom Key Facts Strip */}
+            <div className="mt-14 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-6 text-sm">
+              <div className="flex flex-wrap items-center gap-8 sm:gap-12">
+                <div>
+                  <span className="block text-xl font-bold text-white">440 Ha</span>
+                  <span className="text-xs text-stone-300">Hutan Mangrove Terjaga</span>
+                </div>
+                <div>
+                  <span className="block text-xl font-bold text-white">250+ Warga</span>
+                  <span className="text-xs text-stone-300">Pengelola &amp; Pelaku UMKM</span>
+                </div>
+                <div>
+                  <span className="block text-xl font-bold text-white">Sejak 2005</span>
+                  <span className="text-xs text-stone-300">KMPHP Berbadan Hukum</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-amber-400 text-lg">nature_people</span>
-                <span>440 Hektar Hutan Terjaga</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-amber-400 text-lg">groups</span>
-                <span>250+ Keterlibatan Warga</span>
-              </div>
+              <span className="text-xs font-medium text-amber-300/90 hidden md:inline">
+                6°47&apos;S 109°02&apos;E · Pesisir Utara Jawa Tengah
+              </span>
             </div>
           </div>
         </section>
 
-        {/* FEATURE CARDS */}
-        <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="bg-white rounded-2xl p-6 shadow-md border border-slate-200/80 flex flex-col justify-between hover:shadow-lg transition duration-200">
-                <div>
-                  <div className={`w-12 h-12 rounded-xl ${f.iconBg} flex items-center justify-center mb-4`}>
-                    <span className={`material-symbols-outlined text-2xl ${f.iconColor}`}>{f.icon}</span>
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{f.label}</span>
-                  <h3 className="text-xl font-bold text-slate-900 mt-1 mb-2">{f.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{f.text}</p>
-                </div>
-                <div className="pt-6 mt-6 border-t border-slate-100">
-                  <a
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-800 hover:text-emerald-600 transition group"
-                    href={f.href}>
-                    <span>{f.linkText}</span>
-                    <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
-                      arrow_forward
-                    </span>
-                  </a>
-                </div>
+        {/* THREE CORE PROGRAMS */}
+        <section className="py-20 sm:py-24 bg-white border-b border-stone-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
+                  Ruang Gerak Kawasan
+                </p>
+                <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900">
+                  Tiga Pilar Desa Wisata Mangrove Sari
+                </h2>
               </div>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {PROGRAMS.map((item) => (
+                <article
+                  key={item.title}
+                  className="group bg-[#FAF8F4] rounded-2xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-xl transition duration-300 flex flex-col">
+                  <Link href={item.href} className="relative block aspect-[16/10] overflow-hidden bg-stone-200">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-4 px-3 py-1 rounded-md bg-white/95 text-emerald-950 text-xs font-semibold uppercase tracking-wider shadow-xs">
+                      {item.category}
+                    </span>
+                  </Link>
+
+                  <div className="p-7 flex flex-col justify-between flex-1">
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight text-stone-900 mb-3 leading-snug group-hover:text-emerald-800 transition">
+                        <Link href={item.href}>{item.title}</Link>
+                      </h3>
+                      <p className="text-sm text-stone-600 leading-relaxed mb-6">{item.description}</p>
+                    </div>
+
+                    <div className="pt-4 border-t border-stone-200/80">
+                      <Link
+                        href={item.href}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-900 hover:text-amber-700 transition">
+                        <span>{item.cta}</span>
+                        <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
+                          arrow_forward
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* STORY SECTION */}
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="kisah">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 relative">
-              <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200">
-                <img
-                  className="w-full h-100 sm:h-120 object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
-                  alt="Aktivitas warga menanam pohon bakau"
-                />
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:left-6 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-md border border-slate-200 max-w-xs flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-xl">calendar_today</span>
-                </div>
-                <div>
-                  <span className="block text-sm font-bold text-slate-900">Sejak 2005</span>
-                  <span className="block text-xs text-slate-500">Awal Pergerakan Restorasi</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 flex flex-col items-start">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold tracking-wide uppercase mb-3">
-                <span className="material-symbols-outlined text-sm">history_edu</span>
-                <span>Jejak Konservasi</span>
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 leading-tight mb-4">
-                Dari Tambak Terpuruk Menuju Desa Wisata Inspiratif: Kisah Kebangkitan Dewi Mangrove Sari Brebes
-              </h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Desa Wisata Mangrove Dukuh Pandansari, atau yang akrab disebut Dewi Mangrove Sari, di Desa Kaliwlingi,
-                Kecamatan Brebes, Kabupaten Brebes, adalah contoh nyata dari kekuatan masyarakat lokal dalam mengubah
-                musibah menjadi berkah.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-8">
-                {STORY_TAGS.map((tag) => (
-                  <div key={tag} className="flex items-center gap-2 text-sm text-slate-800 font-medium">
-                    <span className="material-symbols-outlined text-emerald-600 text-lg">check_circle</span>
-                    <span>{tag}</span>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-800 hover:bg-emerald-700 text-white text-sm font-semibold transition shadow-sm"
-                href="/sejarah">
-                <span>Baca Selengkapnya</span>
-                <span className="material-symbols-outlined text-base">arrow_forward</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA PARTNERSHIP */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="rounded-3xl bg-emerald-900 text-white p-8 sm:p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-8 shadow-md">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-300 uppercase tracking-wider mb-2">
-                <span className="material-symbols-outlined text-sm">handshake</span>
-                <span>Kolaborasi &amp; Penelitian</span>
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-                Tertarik Mengadakan Program CSR atau Riset Lapangan?
-              </h2>
-              <p className="text-emerald-100/90 text-sm sm:text-base leading-relaxed">
-                Kami terbuka untuk kemitraan penanaman bibit, kegiatan edukasi universitas, maupun kunjungan studi
-                banding pengelolaan kawasan pesisir.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-              <a
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm transition shadow-sm"
-                href="/kontak">
-                <span>Hubungi Pengelola</span>
-              </a>
-              <a
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-950/60 hover:bg-emerald-950/80 text-white font-semibold text-sm border border-emerald-700/60 transition"
-                href="/documents/proposal-kemitraan.pdf"
-                target="_blank"
-                rel="noopener noreferrer">
-                <span className="material-symbols-outlined text-lg">download</span>
-                <span>Unduh Profile PDF</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* PILARS SECTION */}
-        <section className="py-20 bg-slate-100 border-y border-slate-200" id="pilar">
+        <section id="kisah" className="py-20 sm:py-24 bg-[#FAF8F4]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-2">
-                Fokus Kegiatan
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-4">Pilar Keberhasilan</h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                12 pilar keberhasilan yang dirancang untuk menjaga kelestarian ekosistem sekaligus menopang
-                kesejahteraan warga setempat.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PILLARS.map((p) => (
-                <div
-                  key={p.number}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-xl ${p.iconBg} flex items-center justify-center`}>
-                        <span className={`material-symbols-outlined text-2xl ${p.iconColor}`}>{p.icon}</span>
-                      </div>
-                      <span className="text-xs font-bold text-slate-400 font-mono">{p.number}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{p.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{p.text}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden shadow-lg border border-stone-200 bg-white">
+                  <img
+                    className="w-full h-[25rem] sm:h-[31rem] object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
+                    alt="Warga menanam bibit mangrove di pesisir Brebes"
+                  />
+                  <div className="px-6 py-4 bg-white border-t border-stone-200 flex items-center justify-between gap-4">
+                    <span className="text-xs text-stone-600">
+                      Penanaman bibit bakau secara swadaya di garis pantai Dukuh Pandansari.
+                    </span>
+                    <span className="px-2.5 py-1 rounded bg-emerald-900 text-white text-xs font-semibold shrink-0">
+                      Sejak 2005
+                    </span>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              <div className="lg:col-span-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-3">
+                  Jejak Konservasi
+                </p>
+                <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900 leading-tight mb-5">
+                  Dari Tambak Terabrasi Menjadi Sabuk Hijau Pesisir Brebes
+                </h2>
+                <p className="text-stone-600 leading-relaxed mb-4">
+                  Pada awal tahun 2000-an, abrasi laut menggerus ratusan hektar tambak warga di Dukuh Pandansari, Desa
+                  Kaliwlingi. Alih-alih meninggalkan kampung halaman, warga berinisiatif menanam kembali pohon bakau
+                  untuk menahan gelombang pasang.
+                </p>
+                <p className="text-stone-600 leading-relaxed mb-8">
+                  Dua dekade berselang, hutan yang tumbuh rapat itu tidak hanya menyelamatkan daratan, tetapi juga
+                  menghidupkan kembali ekosistem kepiting, udang, serta membuka ruang wisata edukasi Dewi Mangrove Sari.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 bg-white p-6 rounded-xl border border-stone-200 mb-8">
+                  {STORY_HIGHLIGHTS.map((item) => (
+                    <div key={item} className="flex items-start gap-2.5 text-sm text-stone-800 font-medium">
+                      <span className="material-symbols-outlined text-emerald-700 text-lg shrink-0">check_circle</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/sejarah"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-emerald-900 hover:bg-emerald-800 text-white text-sm font-semibold shadow-sm transition">
+                  <span>Baca Sejarah Kebangkitan</span>
+                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         {/* STATS BAND */}
-        <section className="bg-emerald-950 text-white py-16">
+        <section className="bg-[#062319] text-stone-100 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {STATS.map((s) => (
-                <div key={s.label} className="flex flex-col items-center">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-amber-400 mb-1">{s.value}</span>
-                  <span className="text-sm font-semibold text-white">{s.label}</span>
-                  <span className="text-xs text-emerald-300/80 mt-1">{s.note}</span>
+                <div
+                  key={s.label}
+                  className="bg-white/[0.04] border border-white/10 rounded-xl p-5 flex flex-col justify-between">
+                  <span className="text-2xl sm:text-3xl font-bold text-amber-400 tracking-tight mb-2">{s.figure}</span>
+                  <div>
+                    <span className="block text-sm font-semibold text-white">{s.label}</span>
+                    <span className="block text-xs text-stone-400 mt-0.5">{s.context}</span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* QUOTE SECTION */}
-        <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200 relative overflow-hidden">
-            <span className="material-symbols-outlined absolute -top-4 -right-4 text-9xl text-slate-100 select-none pointer-events-none">
-              format_quote
-            </span>
-            <div className="relative z-10 flex flex-col gap-6">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-800 uppercase tracking-wide">
-                <span className="material-symbols-outlined text-sm">campaign</span>
-                <span>Sekapur Sirih</span>
-              </span>
-              <blockquote className="text-lg sm:text-xl text-slate-800 font-medium italic leading-relaxed border-l-4 border-emerald-600 pl-4">
-                &ldquo;Mangrove Sari adalah Kelompok Pelestari Hutan Pesisir (KMPHP) yang berada di Desa Kaliwlingi,
-                Kecamatan Brebes, Jawa Tengah. Kami berdiri atas inisiatif masyarakat setempat untuk memulihkan dan
-                melestarikan hutan mangrove di wilayah kami, dan mengembangkan kawasan ini menjadi wisata edukasi Dewi
-                Mangrove Sari.
-                <p>
-                  KMPHP Mangrove Sari memiliki visi untuk menjaga ekosistem daerah aliran sungai dan pesisir dalam
-                  kerangka peningkatan kesejahteraan masyarakat sebagai wadah usaha bersama dengan prinsip demokrasi,
-                  transparan, dan mengedapankan kegiatan berbasis konservasi.
+        {/* 12 PILLARS */}
+        <section id="pilar" className="py-20 sm:py-24 bg-[#FAF8F4]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
+                  Capaian &amp; Fokus Kerja
                 </p>
-                <p>
-                  Rehabilitasi di lingkungan pesisir, sungai, muara sungai, dan daerah aliran sungai sejak tahun 2005,
-                  inovasi pemanfaatan potensi sumber daya alam, kolaborasi dengan segenap elemen masyarakat dari
-                  berbagai kalangan seperti pemerintah, kelompok LSM nasional maupun internasional, perguruan tinggi,
-                  komunitas, seniman dan budayawan, serta media masa (pers).&rdquo;{" "}
-                </p>
-              </blockquote>
+                <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900">
+                  Pilar Keberhasilan Pengelolaan Mangrove Sari
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {PILLAR_GROUPS.map((group) => (
+                <div
+                  key={group.cluster}
+                  className={`bg-white rounded-2xl p-7 sm:p-8 shadow-xs border border-stone-200 border-t-4 ${group.accent}`}>
+                  <h3 className="text-lg font-bold tracking-tight text-stone-900 pb-4 mb-6 border-b border-stone-200">
+                    {group.cluster}
+                  </h3>
+                  <div className="space-y-6">
+                    {group.items.map((p) => (
+                      <div key={p.num} className="flex items-start gap-4">
+                        <span className="text-xs font-bold px-2.5 py-1 rounded bg-stone-100 text-stone-700 shrink-0 mt-0.5">
+                          {p.num}
+                        </span>
+                        <div>
+                          <h4 className="text-base font-semibold text-stone-900 mb-1">{p.title}</h4>
+                          <p className="text-sm text-stone-600 leading-relaxed">{p.detail}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SEKAPUR SIRIH SECTION */}
+        <section className="py-20 sm:py-24 bg-white text-stone-800 border-y border-stone-200 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Kolom Kiri: Foto Pengelola / Aktivitas Kawasan + Identitas */}
+              <div className="lg:col-span-5">
+                <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-md bg-[#FAF8F4]">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
+                      alt="Pengurus dan warga KMPHP Mangrove Sari di kawasan konservasi"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6 bg-[#FAF8F4] border-t border-stone-200">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-1">
+                      Sekapur Sirih Pengurus
+                    </p>
+                    <h3 className="text-lg font-bold text-stone-900">KMPHP Mangrove Sari</h3>
+                    <p className="text-xs text-stone-600 mt-1">
+                      Dukuh Pandansari, Desa Kaliwlingi, Kec. Brebes, Jawa Tengah
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Kolom Kanan: Naskah Lengkap Sekapur Sirih */}
+              <div className="lg:col-span-7">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="h-0.5 w-8 bg-amber-600" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-800">
+                    Sambutan &amp; Komitmen Kami
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-4xl font-bold text-stone-900 tracking-tight leading-snug mb-6">
+                  Sekapur Sirih
+                </h2>
+
+                <div className="space-y-5 text-stone-600 leading-relaxed">
+                  <p className="text-base sm:text-lg font-medium text-stone-900 leading-relaxed">
+                    Mangrove Sari adalah Kelompok Masyarakat Pelestari Hutan Pesisir (KMPHP) yang berada di Desa
+                    Kaliwlingi, Kecamatan Brebes, Jawa Tengah. Kami berdiri atas inisiatif masyarakat setempat untuk
+                    memulihkan dan melestarikan hutan mangrove di wilayah kami, sekaligus mengembangkan kawasan ini
+                    menjadi wisata edukasi Dewi Mangrove Sari.
+                  </p>
+
+                  <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                    KMPHP Mangrove Sari memiliki visi untuk menjaga ekosistem daerah aliran sungai dan pesisir dalam
+                    kerangka peningkatan kesejahteraan masyarakat sebagai wadah usaha bersama dengan prinsip demokrasi,
+                    transparan, dan mengedepankan kegiatan berbasis konservasi.
+                  </p>
+
+                  <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                    Rehabilitasi di lingkungan pesisir, sungai, muara sungai, dan daerah aliran sungai sejak tahun 2005
+                    ini terus berkembang melalui inovasi pemanfaatan potensi sumber daya alam serta kolaborasi dengan
+                    segenap elemen—mulai dari pemerintah, LSM nasional maupun internasional, perguruan tinggi,
+                    komunitas, seniman dan budayawan, hingga media massa.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-stone-700">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
+                      Swadaya Masyarakat
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
+                      Demokratis &amp; Transparan
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
+                      Berbasis Konservasi
+                    </span>
+                  </div>
+
+                  <Link
+                    href="/profil"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 hover:text-amber-700 transition">
+                    <span>Profil &amp; Legalitas Organisasi</span>
+                    <span className="material-symbols-outlined text-base">arrow_forward</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* TEAM SECTION */}
-        <section className="py-20 bg-slate-100 border-t border-slate-200">
+        <section className="py-20 sm:py-24 bg-[#FAF8F4] border-b border-stone-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-2">
-                Penggerak Lapangan
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-4">
-                Mengenal Tim Inti Penyelamat Ekosistem
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Tokoh lokal yang mengoordinasikan kegiatan konservasi dan pendampingan lapangan secara berkelanjutan.
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
+                  Penggerak Lapangan
+                </p>
+                <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900">
+                  Tim Inti Pengelola Kawasan
+                </h2>
+              </div>
+              <p className="text-sm text-stone-600 max-w-md">
+                Tokoh warga lokal yang mengoordinasikan pembibitan, operasional kawasan, keuangan, hingga kemitraan
+                riset.
               </p>
             </div>
 
@@ -567,94 +611,134 @@ export default function HomePage() {
               {TEAM_MEMBERS.map((m) => (
                 <div
                   key={m.name}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
-                    <span className="material-symbols-outlined text-3xl">person</span>
+                  className="bg-white rounded-xl p-6 border border-stone-200 shadow-xs hover:border-emerald-700/50 transition flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="w-11 h-11 rounded-lg bg-[#062319] text-amber-400 font-bold text-sm flex items-center justify-center shrink-0">
+                        {m.name.slice(0, 2).toUpperCase()}
+                      </div>
+                      <span className="text-xs font-medium text-stone-600 bg-stone-100 px-2.5 py-1 rounded">
+                        {m.since}
+                      </span>
+                    </div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-emerald-800 mb-1">{m.role}</p>
+                    <h3 className="text-lg font-bold text-stone-900 mb-2">{m.name}</h3>
+                    <p className="text-sm text-stone-600 leading-relaxed">{m.focus}</p>
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold mb-2">
-                    {m.role}
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{m.name}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{m.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* NEWS SECTION */}
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <div>
-              <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-2">
-                Pembaruan Publik
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-slate-900">Kabar dari Pesisir</h2>
+        {/* CTA PARTNERSHIP & NEWS SECTION */}
+        <section className="py-20 sm:py-24 bg-white border-b border-stone-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* CTA Partnership Banner */}
+            <div className="rounded-2xl bg-[#062319] text-white p-8 sm:p-12 border border-emerald-900 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-20">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold text-amber-400 uppercase tracking-widest mb-2">
+                  Kolaborasi &amp; Penelitian
+                </p>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
+                  Program Penanaman CSR, Riset Akademik, &amp; Studi Banding
+                </h2>
+                <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
+                  Kami mendampingi lembaga, perusahaan, maupun perguruan tinggi yang ingin melaksanakan penanaman bibit
+                  terukur, penelitian ekosistem mangrove, atau kunjungan edukasi lapangan.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                <Link
+                  href="/kontak"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm transition">
+                  Hubungi Sekretariat
+                </Link>
+                <a
+                  href="/documents/proposal-kemitraan.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium text-sm transition">
+                  <span className="material-symbols-outlined text-lg">download</span>
+                  <span>Unduh Profil (PDF)</span>
+                </a>
+              </div>
             </div>
-            <a
-              className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-800 hover:text-emerald-600 transition group"
-              href="/artikel">
-              <span>Arsip Artikel</span>
-              <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </a>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {NEWS_LIST.map((n) => (
-              <article
-                key={n.title}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col hover:shadow-md transition duration-200">
-                <div className="relative h-48 bg-slate-200">
-                  {n.image ? (
-                    <img className="w-full h-full object-cover" src={n.image} alt={n.title} />
-                  ) : (
-                    <div className="w-full h-full bg-emerald-900/10 flex items-center justify-center text-emerald-800">
-                      <span className="material-symbols-outlined text-4xl">forest</span>
-                    </div>
-                  )}
-                  <span
-                    className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${n.categoryColor}`}>
-                    {n.category}
-                  </span>
-                </div>
-                <div className="p-6 flex flex-col justify-between flex-1">
-                  <div>
-                    <span className="text-xs text-slate-400 block mb-2">{n.date}</span>
-                    <h3 className="text-lg font-bold text-slate-900 leading-snug mb-2">{n.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-4">{n.excerpt}</p>
-                  </div>
-                  <a
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-800 hover:text-emerald-600 transition group mt-auto"
-                    href={n.href}>
-                    <span>Baca Selengkapnya</span>
-                    <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
-                      arrow_forward
+            {/* News Header */}
+            <div className="flex items-end justify-between gap-4 mb-10">
+              <div>
+                <p className="text-xs font-semibold text-emerald-800 uppercase tracking-widest mb-1">Kabar Terbaru</p>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900">Catatan dari Pesisir</h2>
+              </div>
+              <Link
+                href="/wardia"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-900 hover:text-emerald-800 transition">
+                <span>Semua Warta</span>
+                <span className="material-symbols-outlined text-base">arrow_forward</span>
+              </Link>
+            </div>
+
+            {/* News Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+              {NEWS_LIST.map((n) => (
+                <article
+                  key={n.title}
+                  className="bg-[#FAF8F4] rounded-xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-md transition flex flex-col group">
+                  <Link href={n.href} className="block relative overflow-hidden bg-stone-200 aspect-[16/10]">
+                    {n.image ? (
+                      <img
+                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                        src={n.image}
+                        alt={n.title}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[#062319] to-emerald-900 flex flex-col items-center justify-center text-emerald-200/70 p-6 text-center">
+                        <span className="material-symbols-outlined text-3xl mb-1 text-amber-400/80">forest</span>
+                        <span className="text-[11px] uppercase tracking-widest font-medium">Dokumentasi Lapangan</span>
+                      </div>
+                    )}
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-stone-900/85 text-white text-xs font-medium backdrop-blur-xs">
+                      {n.tag}
                     </span>
-                  </a>
-                </div>
-              </article>
-            ))}
+                  </Link>
+                  <div className="p-6 flex flex-col justify-between flex-1">
+                    <div>
+                      <time className="text-xs text-stone-500 block mb-2">{n.date}</time>
+                      <h3 className="text-lg font-bold tracking-tight text-stone-900 leading-snug mb-2 group-hover:text-emerald-800 transition">
+                        <Link href={n.href}>{n.title}</Link>
+                      </h3>
+                      <p className="text-sm text-stone-600 leading-relaxed mb-4">{n.excerpt}</p>
+                    </div>
+                    <Link
+                      href={n.href}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-800 hover:text-emerald-700 pt-3 border-t border-stone-200/80">
+                      <span>Baca Catatan</span>
+                      <span className="material-symbols-outlined text-base">arrow_forward</span>
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* PARTNERS SECTION */}
-        <section className="py-16 bg-slate-100 border-t border-slate-200">
+        <section className="py-16 bg-[#EFECE4]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block mb-1">
-                Kemitraan
-              </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Mitra Sejati</h2>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
+              <p className="text-xs font-semibold text-stone-700 uppercase tracking-widest">
+                Mitra Pendukung &amp; Jejaring Riset
+              </p>
+              <span className="text-xs text-stone-500">Bagian dari 70+ lembaga mitra sejak 2005</span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-              {PARTNERS.map((p) => (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {PARTNERS.map((name) => (
                 <div
-                  key={p.name}
-                  className="bg-white rounded-xl p-4 flex flex-col items-center justify-center gap-2 text-center border border-slate-200/60 shadow-2xs h-24">
-                  <span className="material-symbols-outlined text-2xl text-emerald-700">{p.icon}</span>
-                  <span className="text-xs font-semibold text-slate-800 leading-tight">{p.name}</span>
+                  key={name}
+                  className="bg-white/90 border border-stone-300/80 rounded-lg px-4 py-3.5 text-sm font-semibold text-stone-800 flex items-center justify-between">
+                  <span>{name}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0" />
                 </div>
               ))}
             </div>
@@ -663,119 +747,105 @@ export default function HomePage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-emerald-950 text-white pt-16 pb-12 border-t border-emerald-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-emerald-900">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-emerald-200">
-                <span className="material-symbols-outlined text-xl">forest</span>
-              </div>
-              <span className="text-lg font-bold tracking-tight">MANGROVE SARI</span>
-            </div>
-            <p className="text-sm text-emerald-200/80 leading-relaxed">
-              Inisiatif konservasi hutan bakau dan pemulihan pesisir berbasis masyarakat di Dukuh Pandansari, Desa
-              Kaliwlingi, Brebes, Jawa Tengah.
+      <footer className="bg-[#062319] text-stone-300 pt-16 pb-12 border-t-4 border-amber-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+          <div>
+            <span className="text-lg font-bold tracking-tight text-white block mb-3">MANGROVE SARI</span>
+            <p className="text-sm text-stone-400 leading-relaxed">
+              Kelompok Masyarakat Pelestari Hutan Pesisir (KMPHP) di Dukuh Pandansari, Desa Kaliwlingi, Kecamatan
+              Brebes, Kabupaten Brebes, Jawa Tengah.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">Navigasi</h4>
-            <ul className="flex flex-col gap-2.5 text-sm text-emerald-200/80">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Navigasi</h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <a className="hover:text-white transition" href="#">
+                <Link className="hover:text-white transition" href="/">
                   Beranda
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/profil">
+                <Link className="hover:text-white transition" href="/profil">
                   Profil &amp; Legalitas
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/sejarah">
+                <Link className="hover:text-white transition" href="/sejarah">
                   Sejarah Kebangkitan
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/majalah">
-                  Majalah Publikasi
-                </a>
+                <Link className="hover:text-white transition" href="/wardia">
+                  Warta &amp; Media
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/galeri">
+                <Link className="hover:text-white transition" href="/galeri">
                   Galeri Dokumentasi
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">Program &amp; Wisata</h4>
-            <ul className="flex flex-col gap-2.5 text-sm text-emerald-200/80">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Program &amp; Fokus</h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <a className="hover:text-white transition" href="/ekowisata">
-                  Paket Susur Perahu
-                </a>
+                <Link className="hover:text-white transition" href="/ekowisata">
+                  Ekowisata Pesisir
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/ekowisata#tanam">
-                  Adopsi &amp; Tanam Bibit
-                </a>
+                <Link className="hover:text-white transition" href="/ekowisata#konservasi">
+                  Pembibitan &amp; Konservasi
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/umkm">
+                <Link className="hover:text-white transition" href="/umkm">
                   Produk Olahan Warga
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="/riset">
+                <Link className="hover:text-white transition" href="/riset">
                   Penelitian &amp; Magang
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">Sekretariat</h4>
-            <ul className="flex flex-col gap-3 text-sm text-emerald-200/80">
-              <li className="flex items-start gap-2.5">
-                <span className="material-symbols-outlined text-lg text-emerald-400 shrink-0">location_on</span>
-                <span>Jl. Sungai Beting RT 01/05, Dukuh Pandansari, Desa Kaliwlingi, Brebes, Jawa Tengah</span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <span className="material-symbols-outlined text-lg text-emerald-400 shrink-0">call</span>
-                <span>+62 812-3456-7890</span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <span className="material-symbols-outlined text-lg text-emerald-400 shrink-0">mail</span>
-                <span>sekretariat@mangrovesari.com</span>
-              </li>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-amber-400 mb-4">Sekretariat</h4>
+            <ul className="space-y-2.5 text-sm text-stone-400">
+              <li>Jl. Sungai Beting RT 01/05, Dukuh Pandansari, Desa Kaliwlingi, Brebes, Jawa Tengah</li>
+              <li className="text-stone-200 font-medium">+62 812-3456-7890</li>
+              <li className="text-stone-200 font-medium">sekretariat@mangrovesari.com</li>
             </ul>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-emerald-300/70">
-          <p>© {new Date().getFullYear()} Mangrove Sari Brebes. Seluruh hak cipta dilindungi.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-400">
+          <p>© {new Date().getFullYear()} KMPHP Mangrove Sari Brebes.</p>
           <div className="flex gap-6">
-            <a className="hover:text-white transition" href="/privasi">
+            <Link className="hover:text-white transition" href="/privasi">
               Kebijakan Privasi
-            </a>
-            <a className="hover:text-white transition" href="/syarat">
+            </Link>
+            <Link className="hover:text-white transition" href="/syarat">
               Syarat &amp; Ketentuan
-            </a>
+            </Link>
           </div>
         </div>
       </footer>
 
       {/* Floating WA Button */}
       <a
-        aria-label="Chat WhatsApp"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-full shadow-lg transition duration-200 hover:scale-105"
+        aria-label="Chat WhatsApp Sekretariat"
         href="https://wa.me/6281234567890"
         rel="noopener noreferrer"
-        target="_blank">
-        <span className="material-symbols-outlined text-xl">forum</span>
-        <span className="text-sm font-bold hidden sm:inline">Kontak WhatsApp</span>
+        target="_blank"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-700 text-white px-4 py-3 rounded-lg shadow-lg border border-emerald-600 transition">
+        <span className="material-symbols-outlined text-lg">chat</span>
+        <span className="text-sm font-semibold hidden sm:inline">Tanya Pengelola</span>
       </a>
     </div>
   );
