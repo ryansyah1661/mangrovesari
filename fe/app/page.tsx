@@ -256,9 +256,26 @@ const PARTNERS = [
   "Yayasan KEHATI",
 ];
 
+function SectionDivider({ number, label }: { number: string; label: string }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center gap-4">
+        <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-800 shrink-0">
+          <span className="w-2 h-2 rounded-full bg-emerald-700" />
+          <span>
+            {number} · {label}
+          </span>
+        </span>
+        <div className="h-px flex-1 bg-stone-200" />
+        <span className="text-[11px] font-medium text-stone-400 hidden sm:inline">KMPHP Mangrove Sari</span>
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
-    <div className="bg-[#FAF8F4] font-sans text-stone-800 antialiased min-h-screen selection:bg-emerald-900 selection:text-white">
+    <div className="bg-white font-sans text-stone-800 antialiased min-h-screen selection:bg-emerald-900 selection:text-white">
       <SiteHeader />
 
       <main className="w-full">
@@ -324,12 +341,12 @@ export default function HomePage() {
         </section>
 
         {/* THREE CORE PROGRAMS */}
-        <section className="py-20 sm:py-24 bg-white border-b border-stone-200">
+        <section className="py-20 sm:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
-                  Ruang Gerak Kawasan
+                  01 · Ruang Gerak Kawasan
                 </p>
                 <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900">
                   Tiga Pilar Desa Wisata Mangrove Sari
@@ -341,7 +358,7 @@ export default function HomePage() {
               {PROGRAMS.map((item) => (
                 <article
                   key={item.title}
-                  className="group bg-[#FAF8F4] rounded-2xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-xl transition duration-300 flex flex-col">
+                  className="group bg-stone-50/70 rounded-2xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-xl transition duration-300 flex flex-col">
                   <Link href={item.href} className="relative block aspect-[16/10] overflow-hidden bg-stone-200">
                     <img
                       src={item.image}
@@ -379,8 +396,10 @@ export default function HomePage() {
           </div>
         </section>
 
+        <SectionDivider number="02" label="Jejak Konservasi" />
+
         {/* STORY SECTION */}
-        <section id="kisah" className="py-20 sm:py-24 bg-[#FAF8F4]">
+        <section id="kisah" className="py-20 sm:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-6">
@@ -390,20 +409,12 @@ export default function HomePage() {
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
                     alt="Warga menanam bibit mangrove di pesisir Brebes"
                   />
-                  <div className="px-6 py-4 bg-white border-t border-stone-200 flex items-center justify-between gap-4">
-                    <span className="text-xs text-stone-600">
-                      Penanaman bibit bakau secara swadaya di garis pantai Dukuh Pandansari.
-                    </span>
-                    <span className="px-2.5 py-1 rounded bg-emerald-900 text-white text-xs font-semibold shrink-0">
-                      Sejak 2005
-                    </span>
-                  </div>
                 </div>
               </div>
 
               <div className="lg:col-span-6">
                 <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-3">
-                  Jejak Konservasi
+                  Kisah Kebangkitan
                 </p>
                 <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900 leading-tight mb-5">
                   Dari Tambak Terabrasi Menjadi Sabuk Hijau Pesisir Brebes
@@ -418,7 +429,7 @@ export default function HomePage() {
                   menghidupkan kembali ekosistem kepiting, udang, serta membuka ruang wisata edukasi Dewi Mangrove Sari.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 bg-white p-6 rounded-xl border border-stone-200 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 bg-stone-50/70 p-6 rounded-xl border border-stone-200 mb-8">
                   {STORY_HIGHLIGHTS.map((item) => (
                     <div key={item} className="flex items-start gap-2.5 text-sm text-stone-800 font-medium">
                       <span className="material-symbols-outlined text-emerald-700 text-lg shrink-0">check_circle</span>
@@ -438,7 +449,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* STATS BAND */}
+        {/* STATS BAND (Kontras Gelap) */}
         <section className="bg-[#062319] text-stone-100 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -458,15 +469,15 @@ export default function HomePage() {
         </section>
 
         {/* 12 PILLARS */}
-        <section id="pilar" className="py-20 sm:py-24 bg-[#FAF8F4]">
+        <section id="pilar" className="py-20 sm:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-              <div className="max-w-2xl">
+              <div className="max-w-4xl">
                 <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
-                  Capaian &amp; Fokus Kerja
+                  03 · Capaian &amp; Fokus Kerja
                 </p>
                 <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900">
-                  Pilar Keberhasilan Pengelolaan Mangrove Sari
+                  Pilar Keberhasilan Pengelolaan <span className="whitespace-nowrap">Mangrove Sari</span>
                 </h2>
               </div>
             </div>
@@ -475,14 +486,14 @@ export default function HomePage() {
               {PILLAR_GROUPS.map((group) => (
                 <div
                   key={group.cluster}
-                  className={`bg-white rounded-2xl p-7 sm:p-8 shadow-xs border border-stone-200 border-t-4 ${group.accent}`}>
+                  className={`bg-stone-50/60 rounded-2xl p-7 sm:p-8 shadow-xs border border-stone-200 border-t-4 ${group.accent}`}>
                   <h3 className="text-lg font-bold tracking-tight text-stone-900 pb-4 mb-6 border-b border-stone-200">
                     {group.cluster}
                   </h3>
                   <div className="space-y-6">
                     {group.items.map((p) => (
                       <div key={p.num} className="flex items-start gap-4">
-                        <span className="text-xs font-bold px-2.5 py-1 rounded bg-stone-100 text-stone-700 shrink-0 mt-0.5">
+                        <span className="text-xs font-bold px-2.5 py-1 rounded bg-white border border-stone-200 text-stone-700 shrink-0 mt-0.5">
                           {p.num}
                         </span>
                         <div>
@@ -498,89 +509,82 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* SEKAPUR SIRIH SECTION */}
-        <section className="py-20 sm:py-24 bg-white text-stone-800 border-y border-stone-200 relative">
+        {/* SEKAPUR SIRIH SECTION (Framed Container Card di atas White) */}
+        <section className="py-6 sm:py-8 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              {/* Kolom Kiri: Foto Pengelola / Aktivitas Kawasan + Identitas */}
-              <div className="lg:col-span-5">
-                <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-md bg-[#FAF8F4]">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
-                      alt="Pengurus dan warga KMPHP Mangrove Sari di kawasan konservasi"
-                      className="w-full h-full object-cover"
-                    />
+            <div className="rounded-3xl bg-stone-50/80 border border-stone-200 p-8 sm:p-12 lg:p-14">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                {/* Kolom Kiri: Foto Pengelola / Aktivitas Kawasan */}
+                <div className="lg:col-span-5">
+                  <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-md bg-white">
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmST2QppswG4sX7fNkqDfJrhmPjWWSGgh5o0iwiStMPVBNXGSmChgdUvP-nyn6_kf82bRi97hzZ5xzzaGiiVE1QYK_pIl0TWLwo7FeOkhBmXwcHCDIb9xEQj5sVUgvivqTzBXnz0Fue9cr_h69RhXM6iy3sB0_0qw-lZyGS2Jm_PXHoVGrYWpJjcjbFTWzRbu1O9-Xih0mMvs0hdRGoFUQJhCVM7V0S_d2OlQu5c"
+                        alt="Pengurus dan warga KMPHP Mangrove Sari di kawasan konservasi"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
-                  <div className="p-6 bg-[#FAF8F4] border-t border-stone-200">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-1">
-                      Sekapur Sirih Pengurus
+                </div>
+
+                {/* Kolom Kanan: Naskah Lengkap Sekapur Sirih */}
+                <div className="lg:col-span-7">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="h-0.5 w-8 bg-emerald-800" />
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-800">
+                      04 · Sambutan &amp; Komitmen Kami
+                    </span>
+                  </div>
+
+                  <h2 className="text-2xl sm:text-4xl font-bold text-stone-900 tracking-tight leading-snug mb-6">
+                    Sekapur Sirih
+                  </h2>
+
+                  <div className="space-y-5 text-stone-600 leading-relaxed">
+                    <p className="text-base sm:text-lg font-medium text-stone-900 leading-relaxed">
+                      Mangrove Sari adalah Kelompok Masyarakat Pelestari Hutan Pesisir (KMPHP) yang berada di Desa
+                      Kaliwlingi, Kecamatan Brebes, Jawa Tengah. Kami berdiri atas inisiatif masyarakat setempat untuk
+                      memulihkan dan melestarikan hutan mangrove di wilayah kami, sekaligus mengembangkan kawasan ini
+                      menjadi wisata edukasi Dewi Mangrove Sari.
                     </p>
-                    <h3 className="text-lg font-bold text-stone-900">KMPHP Mangrove Sari</h3>
-                    <p className="text-xs text-stone-600 mt-1">
-                      Dukuh Pandansari, Desa Kaliwlingi, Kec. Brebes, Jawa Tengah
+
+                    <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                      KMPHP Mangrove Sari memiliki visi untuk menjaga ekosistem daerah aliran sungai dan pesisir dalam
+                      kerangka peningkatan kesejahteraan masyarakat sebagai wadah usaha bersama dengan prinsip
+                      demokrasi, transparan, dan mengedepankan kegiatan berbasis konservasi.
+                    </p>
+
+                    <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
+                      Rehabilitasi di lingkungan pesisir, sungai, muara sungai, dan daerah aliran sungai sejak tahun
+                      2005 ini terus berkembang melalui inovasi pemanfaatan potensi sumber daya alam serta kolaborasi
+                      dengan segenap elemen—mulai dari pemerintah, LSM nasional maupun internasional, perguruan tinggi,
+                      komunitas, seniman dan budayawan, hingga media massa.
                     </p>
                   </div>
-                </div>
-              </div>
 
-              {/* Kolom Kanan: Naskah Lengkap Sekapur Sirih */}
-              <div className="lg:col-span-7">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="h-0.5 w-8 bg-amber-600" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-800">
-                    Sambutan &amp; Komitmen Kami
-                  </span>
-                </div>
+                  <div className="mt-8 pt-6 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-stone-700">
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
+                        Swadaya Masyarakat
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
+                        Demokratis &amp; Transparan
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
+                        Berbasis Konservasi
+                      </span>
+                    </div>
 
-                <h2 className="text-2xl sm:text-4xl font-bold text-stone-900 tracking-tight leading-snug mb-6">
-                  Sekapur Sirih
-                </h2>
-
-                <div className="space-y-5 text-stone-600 leading-relaxed">
-                  <p className="text-base sm:text-lg font-medium text-stone-900 leading-relaxed">
-                    Mangrove Sari adalah Kelompok Masyarakat Pelestari Hutan Pesisir (KMPHP) yang berada di Desa
-                    Kaliwlingi, Kecamatan Brebes, Jawa Tengah. Kami berdiri atas inisiatif masyarakat setempat untuk
-                    memulihkan dan melestarikan hutan mangrove di wilayah kami, sekaligus mengembangkan kawasan ini
-                    menjadi wisata edukasi Dewi Mangrove Sari.
-                  </p>
-
-                  <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-                    KMPHP Mangrove Sari memiliki visi untuk menjaga ekosistem daerah aliran sungai dan pesisir dalam
-                    kerangka peningkatan kesejahteraan masyarakat sebagai wadah usaha bersama dengan prinsip demokrasi,
-                    transparan, dan mengedepankan kegiatan berbasis konservasi.
-                  </p>
-
-                  <p className="text-sm sm:text-base text-stone-600 leading-relaxed">
-                    Rehabilitasi di lingkungan pesisir, sungai, muara sungai, dan daerah aliran sungai sejak tahun 2005
-                    ini terus berkembang melalui inovasi pemanfaatan potensi sumber daya alam serta kolaborasi dengan
-                    segenap elemen—mulai dari pemerintah, LSM nasional maupun internasional, perguruan tinggi,
-                    komunitas, seniman dan budayawan, hingga media massa.
-                  </p>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-stone-700">
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
-                      Swadaya Masyarakat
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
-                      Demokratis &amp; Transparan
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
-                      Berbasis Konservasi
-                    </span>
+                    <Link
+                      href="/profil"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 hover:text-amber-700 transition">
+                      <span>Profil &amp; Legalitas Organisasi</span>
+                      <span className="material-symbols-outlined text-base">arrow_forward</span>
+                    </Link>
                   </div>
-
-                  <Link
-                    href="/profil"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 hover:text-amber-700 transition">
-                    <span>Profil &amp; Legalitas Organisasi</span>
-                    <span className="material-symbols-outlined text-base">arrow_forward</span>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -588,12 +592,12 @@ export default function HomePage() {
         </section>
 
         {/* TEAM SECTION */}
-        <section className="py-20 sm:py-24 bg-[#FAF8F4] border-b border-stone-200">
+        <section className="py-20 sm:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
               <div className="max-w-2xl">
                 <p className="text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
-                  Penggerak Lapangan
+                  05 · Penggerak Lapangan
                 </p>
                 <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-stone-900">
                   Tim Inti Pengelola Kawasan
@@ -609,13 +613,13 @@ export default function HomePage() {
               {TEAM_MEMBERS.map((m) => (
                 <div
                   key={m.name}
-                  className="bg-white rounded-xl p-6 border border-stone-200 shadow-xs hover:border-emerald-700/50 transition flex flex-col justify-between">
+                  className="bg-stone-50/70 rounded-xl p-6 border border-stone-200 shadow-xs hover:border-emerald-700/50 transition flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-4">
                       <div className="w-11 h-11 rounded-lg bg-[#062319] text-amber-400 font-bold text-sm flex items-center justify-center shrink-0">
                         {m.name.slice(0, 2).toUpperCase()}
                       </div>
-                      <span className="text-xs font-medium text-stone-600 bg-stone-100 px-2.5 py-1 rounded">
+                      <span className="text-xs font-medium text-stone-600 bg-white border border-stone-200 px-2.5 py-1 rounded">
                         {m.since}
                       </span>
                     </div>
@@ -629,8 +633,10 @@ export default function HomePage() {
           </div>
         </section>
 
+        <SectionDivider number="06" label="Kolaborasi & Kabar Pesisir" />
+
         {/* CTA PARTNERSHIP & NEWS SECTION */}
-        <section className="py-20 sm:py-24 bg-white border-b border-stone-200">
+        <section className="py-20 sm:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* CTA Partnership Banner */}
             <div className="rounded-2xl bg-[#062319] text-white p-8 sm:p-12 border border-emerald-900 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-20">
@@ -682,7 +688,7 @@ export default function HomePage() {
               {NEWS_LIST.map((n) => (
                 <article
                   key={n.title}
-                  className="bg-[#FAF8F4] rounded-xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-md transition flex flex-col group">
+                  className="bg-stone-50/70 rounded-xl overflow-hidden border border-stone-200 shadow-xs hover:shadow-md transition flex flex-col group">
                   <Link href={n.href} className="block relative overflow-hidden bg-stone-200 aspect-[16/10]">
                     {n.image ? (
                       <img
@@ -721,24 +727,26 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* PARTNERS SECTION */}
-        <section className="py-16 bg-[#EFECE4]">
+        {/* PARTNERS SECTION (Framed Container Card di atas White) */}
+        <section className="pb-20 sm:pb-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-              <p className="text-xs font-semibold text-stone-700 uppercase tracking-widest">
-                Mitra Pendukung &amp; Jejaring Riset
-              </p>
-              <span className="text-xs text-stone-500">Bagian dari 70+ lembaga mitra sejak 2005</span>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {PARTNERS.map((name) => (
-                <div
-                  key={name}
-                  className="bg-white/90 border border-stone-300/80 rounded-lg px-4 py-3.5 text-sm font-semibold text-stone-800 flex items-center justify-between">
-                  <span>{name}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0" />
-                </div>
-              ))}
+            <div className="rounded-2xl bg-stone-50/80 border border-stone-200 p-7 sm:p-10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-7">
+                <p className="text-xs font-semibold text-stone-700 uppercase tracking-widest">
+                  07 · Mitra Pendukung &amp; Jejaring Riset
+                </p>
+                <span className="text-xs text-stone-500">Bagian dari 70+ lembaga mitra sejak 2005</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {PARTNERS.map((name) => (
+                  <div
+                    key={name}
+                    className="bg-white border border-stone-200 rounded-lg px-4 py-3.5 text-sm font-semibold text-stone-800 flex items-center justify-between">
+                    <span>{name}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
