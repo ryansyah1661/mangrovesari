@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -179,9 +178,9 @@ export default function EkowisataPage() {
     <div className="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen">
       <SiteHeader />
 
-      <main className="w-full pt-20">
+      <main className="w-full">
         {/* 1. HERO SECTION */}
-        <section className="relative w-full bg-emerald-950 text-white min-h-[520px] flex items-center py-16 overflow-hidden">
+        <section className="relative w-full bg-emerald-950 text-white min-h-[540px] flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
               className="w-full h-full object-cover opacity-30"
@@ -192,15 +191,6 @@ export default function EkowisataPage() {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start gap-4">
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-emerald-300/80">
-              <Link className="hover:text-white transition flex items-center gap-1" href="/">
-                <span className="material-symbols-outlined text-base">home</span>
-                Beranda
-              </Link>
-              <span className="material-symbols-outlined text-xs text-emerald-600">chevron_right</span>
-              <span className="text-white font-medium">Ekowisata</span>
-            </nav>
-
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/80 border border-emerald-700/50 text-emerald-300 text-xs sm:text-sm font-medium">
               <span className="material-symbols-outlined text-base">verified</span>
               <span>Destinasi Ekowisata Pesisir Brebes</span>
@@ -556,7 +546,6 @@ export default function EkowisataPage() {
       </main>
 
       <SiteFooter />
-      <WhatsAppFloat />
     </div>
   );
 }

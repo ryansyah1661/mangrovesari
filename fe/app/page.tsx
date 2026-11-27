@@ -225,7 +225,7 @@ const NEWS_LIST: NewsItem[] = [
     title: "Pelepasliaran 500 Bibit Kepiting Bakau Bersama Mahasiswa",
     excerpt:
       "Upaya menjaga keseimbangan rantai makanan ekosistem rawa pasang surut sekaligus mendukung produktivitas tangkapan nelayan setempat.",
-    href: "/artikel/pelepasliaran-kepiting-bakau",
+    href: "/wardia",
   },
   {
     tag: "Fasilitas Kawasan",
@@ -233,7 +233,7 @@ const NEWS_LIST: NewsItem[] = [
     title: "Perbaikan Jalur Boardwalk Kayu Sepanjang 800 Meter Rampung",
     excerpt:
       "Akses menyusuri rimbunnya hutan bakau kini lebih kokoh dan aman dilalui rombongan pelajar maupun keluarga.",
-    href: "/artikel/boardwalk-baru",
+    href: "/wardia",
   },
   {
     tag: "Kabar UMKM",
@@ -241,7 +241,7 @@ const NEWS_LIST: NewsItem[] = [
     title: "Sirup Bogem Olahan Ibu-Ibu Pandansari Raih Apresiasi Daerah",
     excerpt:
       "Minuman olahan alami dari buah mangrove karya kelompok perempuan tani resmi masuk jaringan pemasaran kabupaten.",
-    href: "/artikel/penghargaan-sirup-bogem",
+    href: "/wardia",
   },
 ];
 
@@ -842,17 +842,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-
-      {/* Floating WA Button */}
-      <a
-        aria-label="Chat WhatsApp Sekretariat"
-        href="https://wa.me/6281234567890"
-        rel="noopener noreferrer"
-        target="_blank"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-700 text-white px-4 py-3 rounded-lg shadow-lg border border-emerald-600 transition">
-        <span className="material-symbols-outlined text-lg">chat</span>
-        <span className="text-sm font-semibold hidden sm:inline">Tanya Pengelola</span>
-      </a>
     </div>
   );
 }

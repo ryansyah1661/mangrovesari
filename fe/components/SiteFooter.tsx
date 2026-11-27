@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { SITE, waLink } from "@/lib/site";
 
 const footerNav = [
-  { label: "Home", href: "/" },
-  { label: "Tentang Kami & Organisasi", href: "/organisasi" },
-  { label: "Sejarah Konservasi", href: "/sejarah" },
-  { label: "Majalah & Publikasi", href: "/majalah" },
-  { label: "Kabar & Artikel Edukasi", href: "/artikel" },
+  { label: "Beranda", href: "/" },
+  { label: "Struktur Organisasi", href: "/organisasi" },
+  { label: "Sejarah Pemulihan", href: "/sejarah" },
+  { label: "Warta & Media", href: "/wardia" },
   { label: "Galeri Dokumentasi", href: "/galeri" },
 ];
 
@@ -15,134 +14,117 @@ const footerProgram = [
   { label: "Adopsi & Tanam Bibit", href: "/ekowisata" },
   { label: "Produk Olahan & UMKM Lokal", href: "/umkm" },
   { label: "Studi Lapangan & Riset", href: "/ekowisata" },
-  { label: "Dokumenter & Video Edukasi", href: "/video" },
+  { label: "Kontak & Reservasi", href: "/kontak" },
 ];
 
-const linkClass = "hover:text-on-primary transition-colors flex items-center gap-2";
+const linkClass = "text-stone-300/85 hover:text-white transition-colors flex items-center gap-2 text-sm";
 
 export default function SiteFooter() {
   return (
-    <footer className="w-full bg-primary-container text-on-primary relative overflow-hidden">
-      <div className="w-full overflow-hidden leading-none rotate-180 -mb-1">
-        <svg
-          className="relative block w-full h-8 text-background"
-          preserveAspectRatio="none"
-          viewBox="0 0 1200 120">
-          <path
-            d="M0,0 C150,90 400,100 600,40 C800,-20 1000,80 1200,20 L1200,120 L0,120 Z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-
-      <div className="w-full px-space-md lg:px-margin pt-space-xl pb-space-lg">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl mb-space-xl">
-          <div className="flex flex-col gap-space-md">
-            <div className="flex items-center gap-space-sm">
-              <div className="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary">
-                <span className="material-symbols-outlined text-[22px]">forest</span>
+    <footer className="w-full bg-[#062319] text-stone-200 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-900/90 border border-emerald-500/25 flex items-center justify-center text-amber-400 shrink-0">
+                <span className="material-symbols-outlined text-[20px]">forest</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-headline-sm text-headline-sm text-on-primary font-bold">{SITE.name}</span>
-                <span className="font-label-sm text-label-sm text-on-primary-container">Pesisir Kaliwlingi</span>
+                <span className="font-bold text-base text-white tracking-tight">{SITE.name}</span>
+                <span className="text-[11px] font-medium text-emerald-300/80 uppercase tracking-wider">
+                  Pesisir Kaliwlingi, Brebes
+                </span>
               </div>
             </div>
-            <p className="font-body-md text-body-md text-on-primary-container leading-relaxed">
+            <p className="text-sm text-stone-300/80 leading-relaxed">
               Inisiatif konservasi hutan bakau berbasis komunitas, restorasi pesisir pantai utara Jawa, serta
               pemberdayaan ekowisata dan ekonomi lokal masyarakat Dukuh Pandansari, Brebes.
             </p>
-            <div className="flex items-center gap-space-sm pt-space-xs">
+            <div className="flex items-center gap-2.5 pt-1">
               {[
                 { icon: "public", label: "Facebook", href: SITE.facebook },
                 { icon: "photo_camera", label: "Instagram", href: SITE.instagram },
-                { icon: "smart_display", label: "YouTube", href: SITE.youtube },
+                { icon: "chat", label: "WhatsApp", href: waLink() },
               ].map((s) => (
                 <a
                   key={s.label}
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-full bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 flex items-center justify-center text-on-primary transition-all"
+                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/15 hover:border-white/20 flex items-center justify-center text-stone-200 hover:text-white transition-all"
                   href={s.href}
                   rel="noopener noreferrer"
                   target="_blank">
-                  <span className="material-symbols-outlined text-[20px]">{s.icon}</span>
+                  <span className="material-symbols-outlined text-[18px]">{s.icon}</span>
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col gap-space-md">
-            <h3 className="font-title-lg text-title-lg text-on-primary font-semibold tracking-wide">
-              Navigasi Utama
-            </h3>
-            <ul className="flex flex-col gap-space-sm font-body-md text-body-md text-on-primary-container">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-amber-400">Navigasi Utama</h3>
+            <ul className="flex flex-col gap-2.5">
               {footerNav.map((l) => (
                 <li key={l.label}>
                   <Link className={linkClass} href={l.href}>
-                    <span className="material-symbols-outlined text-[16px]">chevron_right</span>
-                    {l.label}
+                    <span className="material-symbols-outlined text-[15px] text-emerald-400/70">chevron_right</span>
+                    <span>{l.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="flex flex-col gap-space-md">
-            <h3 className="font-title-lg text-title-lg text-on-primary font-semibold tracking-wide">
-              Program &amp; Wisata
-            </h3>
-            <ul className="flex flex-col gap-space-sm font-body-md text-body-md text-on-primary-container">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-amber-400">Program &amp; Wisata</h3>
+            <ul className="flex flex-col gap-2.5">
               {footerProgram.map((l) => (
                 <li key={l.label}>
                   <Link className={linkClass} href={l.href}>
-                    <span className="material-symbols-outlined text-[16px]">chevron_right</span>
-                    {l.label}
+                    <span className="material-symbols-outlined text-[15px] text-emerald-400/70">chevron_right</span>
+                    <span>{l.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="flex flex-col gap-space-md">
-            <h3 className="font-title-lg text-title-lg text-on-primary font-semibold tracking-wide">
-              Kontak &amp; Alamat
-            </h3>
-            <div className="flex flex-col gap-space-md font-body-md text-body-md text-on-primary-container">
-              <div className="flex items-start gap-space-sm">
-                <span className="material-symbols-outlined text-[20px] text-secondary-fixed flex-shrink-0 mt-0.5">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-amber-400">Kontak &amp; Alamat</h3>
+            <div className="flex flex-col gap-3 text-sm text-stone-300/85">
+              <div className="flex items-start gap-2.5">
+                <span className="material-symbols-outlined text-[18px] text-amber-400 shrink-0 mt-0.5">
                   location_on
                 </span>
-                <p>{SITE.address}</p>
+                <p className="leading-relaxed">{SITE.address}</p>
               </div>
-              <div className="flex items-center gap-space-sm">
-                <span className="material-symbols-outlined text-[20px] text-secondary-fixed flex-shrink-0">call</span>
+              <div className="flex items-center gap-2.5">
+                <span className="material-symbols-outlined text-[18px] text-amber-400 shrink-0">call</span>
                 <span>{SITE.phone}</span>
               </div>
-              <div className="flex items-center gap-space-sm">
-                <span className="material-symbols-outlined text-[20px] text-secondary-fixed flex-shrink-0">mail</span>
+              <div className="flex items-center gap-2.5">
+                <span className="material-symbols-outlined text-[18px] text-amber-400 shrink-0">mail</span>
                 <span>{SITE.email}</span>
               </div>
-              <div className="flex items-center gap-space-sm">
-                <span className="material-symbols-outlined text-[20px] text-secondary-fixed flex-shrink-0">
-                  schedule
-                </span>
+              <div className="flex items-center gap-2.5">
+                <span className="material-symbols-outlined text-[18px] text-amber-400 shrink-0">schedule</span>
                 <span>{SITE.hours}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-primary-container">
-          <p>© 2026 MANGROVE SARI. Seluruh Hak Cipta Dilindungi.</p>
-          <div className="flex items-center gap-space-lg">
-            <Link className="hover:text-on-primary transition-colors" href="/kebijakan-privasi">
-              Kebijakan Privasi
-            </Link>
-            <Link className="hover:text-on-primary transition-colors" href="/syarat-ketentuan">
-              Syarat &amp; Ketentuan
-            </Link>
-            <Link className="hover:text-on-primary transition-colors" href="/kontak">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+          <p>© {new Date().getFullYear()} {SITE.name}. Seluruh Hak Cipta Dilindungi.</p>
+          <div className="flex items-center gap-6">
+            <Link className="hover:text-white transition-colors" href="/kontak">
               Bantuan Wisata
             </Link>
+            <a
+              className="hover:text-white transition-colors"
+              href={waLink()}
+              rel="noopener noreferrer"
+              target="_blank">
+              WhatsApp Sekretariat
+            </a>
           </div>
         </div>
       </div>

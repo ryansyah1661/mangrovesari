@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ProductCatalog from "@/components/umkm/ProductCatalog";
 import { TESTIMONIALS } from "@/lib/testimonials";
 import { waLink } from "@/lib/site";
@@ -37,20 +36,10 @@ export default function UmkmPage() {
     <div className="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen">
       <SiteHeader />
 
-      <main className="w-full pt-20">
+      <main className="w-full">
         {/* 1. HERO SECTION */}
-        <section className="bg-emerald-950 text-white py-12 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <section className="bg-emerald-950 text-white pt-28 sm:pt-32 pb-12 lg:pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           <div className="max-w-7xl mx-auto flex flex-col gap-6 relative z-10">
-            {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-emerald-300/80">
-              <Link className="hover:text-white transition flex items-center gap-1" href="/">
-                <span className="material-symbols-outlined text-base">home</span>
-                Beranda
-              </Link>
-              <span className="material-symbols-outlined text-xs text-emerald-600">chevron_right</span>
-              <span className="text-white font-medium">UMKM Pesisir</span>
-            </nav>
-
             <div className="flex flex-col gap-4 max-w-3xl">
               <div className="inline-flex items-center gap-2 w-fit px-3 py-1 rounded-full bg-emerald-900/80 border border-emerald-700/50 text-emerald-300 text-xs sm:text-sm font-medium">
                 <span className="material-symbols-outlined text-base">eco</span>
@@ -248,7 +237,6 @@ export default function UmkmPage() {
       </main>
 
       <SiteFooter />
-      <WhatsAppFloat />
     </div>
   );
 }

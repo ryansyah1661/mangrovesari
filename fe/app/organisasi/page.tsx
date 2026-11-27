@@ -262,22 +262,10 @@ export default function OrganisasiPage() {
     <div className="bg-[#FAF8F4] font-sans text-stone-800 antialiased min-h-screen selection:bg-emerald-900 selection:text-white">
       <SiteHeader />
 
-      <main className="w-full pt-20">
+      <main className="w-full">
         {/* 1. HERO & BREADCRUMB HEADER (Dark Emerald Band matching Home Hero tone) */}
-        <section className="bg-[#062319] text-white py-16 sm:py-20 border-b-4 border-amber-600 relative overflow-hidden">
+        <section className="bg-[#062319] text-white pt-28 sm:pt-32 pb-16 sm:pb-20 border-b-4 border-amber-600 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-stone-300 mb-6">
-              <Link href="/" className="hover:text-amber-400 transition flex items-center gap-1">
-                <span className="material-symbols-outlined text-sm">home</span>
-                <span>Beranda</span>
-              </Link>
-              <span className="material-symbols-outlined text-xs text-stone-500">chevron_right</span>
-              <span className="text-stone-400">Profil</span>
-              <span className="material-symbols-outlined text-xs text-stone-500">chevron_right</span>
-              <span className="text-amber-400 font-semibold">Organisasi &amp; Legalitas</span>
-            </nav>
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
               <div className="lg:col-span-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-400 mb-3">
@@ -812,17 +800,6 @@ export default function OrganisasiPage() {
           </div>
         </div>
       </footer>
-
-      {/* Floating WA Button */}
-      <a
-        aria-label="Chat WhatsApp Sekretariat"
-        href="https://wa.me/6281234567890"
-        rel="noopener noreferrer"
-        target="_blank"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-700 text-white px-4 py-3 rounded-lg shadow-lg border border-emerald-600 transition">
-        <span className="material-symbols-outlined text-lg">chat</span>
-        <span className="text-sm font-semibold hidden sm:inline">Tanya Pengelola</span>
-      </a>
     </div>
   );
 }

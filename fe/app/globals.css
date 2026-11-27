@@ -62,19 +62,20 @@
   --spacing-margin-mobile: 1.25rem;
 
   /* Font Families */
-  --font-display-lg: "Newsreader", serif;
-  --font-display-lg-mobile: "Newsreader", serif;
-  --font-headline-lg: "Newsreader", serif;
-  --font-headline-lg-mobile: "Newsreader", serif;
-  --font-headline-md: "Newsreader", serif;
-  --font-headline-sm: "Newsreader", serif;
-  --font-body-lg: "Plus Jakarta Sans", sans-serif;
-  --font-body-md: "Plus Jakarta Sans", sans-serif;
-  --font-body-sm: "Plus Jakarta Sans", sans-serif;
-  --font-title-lg: "Plus Jakarta Sans", sans-serif;
-  --font-title-md: "Plus Jakarta Sans", sans-serif;
-  --font-label-md: "Plus Jakarta Sans", sans-serif;
-  --font-label-sm: "Plus Jakarta Sans", sans-serif;
+  --font-sans: var(--font-poppins), "Poppins", sans-serif;
+  --font-display-lg: var(--font-poppins), "Poppins", sans-serif;
+  --font-display-lg-mobile: var(--font-poppins), "Poppins", sans-serif;
+  --font-headline-lg: var(--font-poppins), "Poppins", sans-serif;
+  --font-headline-lg-mobile: var(--font-poppins), "Poppins", sans-serif;
+  --font-headline-md: var(--font-poppins), "Poppins", sans-serif;
+  --font-headline-sm: var(--font-poppins), "Poppins", sans-serif;
+  --font-body-lg: var(--font-poppins), "Poppins", sans-serif;
+  --font-body-md: var(--font-poppins), "Poppins", sans-serif;
+  --font-body-sm: var(--font-poppins), "Poppins", sans-serif;
+  --font-title-lg: var(--font-poppins), "Poppins", sans-serif;
+  --font-title-md: var(--font-poppins), "Poppins", sans-serif;
+  --font-label-md: var(--font-poppins), "Poppins", sans-serif;
+  --font-label-sm: var(--font-poppins), "Poppins", sans-serif;
 
   /* Font Sizes (ukuran asli dari Tailwind config Stitch) */
   --text-display-lg: 56px;
